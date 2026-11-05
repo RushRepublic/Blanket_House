@@ -17,9 +17,6 @@ export default function Landscapes() {
             </div>
             <div className="lands__shade" aria-hidden="true" />
             <div className="lands__text">
-              <span className="lands__count" aria-hidden="true">
-                {String(i + 1).padStart(2, "0")} — 03
-              </span>
               <p className="lands__word">{l.word}</p>
               <p className="lands__caption">
                 {l.place} · {l.stay}

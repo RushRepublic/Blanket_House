@@ -30,6 +30,8 @@ import mHorseRide from "@/assets/images/m-horse-ride.jpg";
 import mKeralaCurry from "@/assets/images/m-kerala-curry.jpg";
 import mMehendi from "@/assets/images/m-mehendi.jpg";
 import mMocktails from "@/assets/images/m-mocktails.jpg";
+import mOutdoorGames from "@/assets/images/m-outdoor-games.jpg";
+import mOvenPizza from "@/assets/images/m-oven-pizza.jpg";
 import mParradice from "@/assets/images/m-parradice.jpg";
 import mPavillionBath from "@/assets/images/m-pavillion-bath.jpg";
 import mPicnicMist from "@/assets/images/m-picnic-mist.jpg";
@@ -37,6 +39,7 @@ import mPoolRain from "@/assets/images/m-pool-rain.jpg";
 import mPoolSplash from "@/assets/images/m-pool-splash.jpg";
 import mPoolVillaView from "@/assets/images/m-pool-villa-view.jpg";
 import mTeaTasting from "@/assets/images/m-tea-tasting.jpg";
+import mViewpointUmbrella from "@/assets/images/m-viewpoint-umbrella.jpg";
 import mWatchTower from "@/assets/images/m-watch-tower.jpg";
 import mYoga from "@/assets/images/m-yoga.jpg";
 import mapRiversideAerial from "@/assets/images/map-riverside-aerial.jpg";
@@ -57,6 +60,7 @@ import stayMunnarClouds from "@/assets/images/stay-munnar-clouds.jpg";
 import stayMunnarSuite from "@/assets/images/stay-munnar-suite.jpg";
 import stayRiversideAerial from "@/assets/images/stay-riverside-aerial.jpg";
 import stayRiversideDeck from "@/assets/images/stay-riverside-deck.jpg";
+import staysHeadWaterfall from "@/assets/images/stays-head-waterfall.jpg";
 
 export const img = {
   daysHoneymoonPool,
@@ -89,6 +93,8 @@ export const img = {
   mKeralaCurry,
   mMehendi,
   mMocktails,
+  mOutdoorGames,
+  mOvenPizza,
   mParradice,
   mPavillionBath,
   mPicnicMist,
@@ -96,6 +102,7 @@ export const img = {
   mPoolSplash,
   mPoolVillaView,
   mTeaTasting,
+  mViewpointUmbrella,
   mWatchTower,
   mYoga,
   mapRiversideAerial,
@@ -116,4 +123,5 @@ export const img = {
   stayMunnarSuite,
   stayRiversideAerial,
   stayRiversideDeck,
+  staysHeadWaterfall,
 };

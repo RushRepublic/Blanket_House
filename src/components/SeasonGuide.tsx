@@ -30,20 +30,28 @@ export default function SeasonGuide() {
       </div>
 
       <div className="seasons__body">
-        <div className="months" role="tablist" aria-label="Choose a month">
-          {monthNames.map((name, i) => (
-            <button
-              key={name}
-              type="button"
-              role="tab"
-              aria-selected={month === i + 1}
-              aria-controls="season-panel"
-              className="months__tab"
-              onClick={() => setMonth(i + 1)}
-            >
-              {name}
-            </button>
-          ))}
+        <div className="seasons__top">
+          <header className="dest__head">
+            <h2 id="dest-title" className="h2" data-split>
+              When to come, and what you will see
+            </h2>
+          </header>
+
+          <div className="months" role="tablist" aria-label="Choose a month">
+            {monthNames.map((name, i) => (
+              <button
+                key={name}
+                type="button"
+                role="tab"
+                aria-selected={month === i + 1}
+                aria-controls="season-panel"
+                className="months__tab"
+                onClick={() => setMonth(i + 1)}
+              >
+                {name}
+              </button>
+            ))}
+          </div>
         </div>
 
         <div id="season-panel" role="tabpanel" className="seasons__panel" key={season.id}>

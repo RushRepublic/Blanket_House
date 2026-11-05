@@ -1,17 +1,27 @@
 import Image from "next/image";
+import Backdrop from "../Backdrop";
 import { stays } from "@/content/site";
+import { img } from "@/content/images";
 
 export default function Stays() {
   return (
     <section id="stays" className="stays dark" aria-labelledby="stays-title">
-      <header className="stays__head wrap">
-        <p className="eyebrow eyebrow--gold">Stays</p>
-        <h2 id="stays-title" className="h2 stays__title" data-split>
-          Choose your landscape
-        </h2>
-        <p className="stays__sub" data-fade>
-          Three places, three different worlds. A forest in Thekkady, a river and a waterfall in the hills of Munnar.
-        </p>
+      <header className="stays__head">
+        <Backdrop
+          image={img.staysHeadWaterfall}
+          alt="River cutting through dense forest canopy in the Munnar hills"
+          shade="full"
+          parallax={0.15}
+        />
+        <div className="wrap">
+          <p className="eyebrow eyebrow--gold">Stays</p>
+          <h2 id="stays-title" className="h2 stays__title" data-split>
+            Choose your landscape
+          </h2>
+          <p className="stays__sub" data-fade>
+            Three places, three different worlds. A forest in Thekkady, a river and a waterfall in the hills of Munnar.
+          </p>
+        </div>
       </header>
 
       <div className="chapters">
@@ -32,7 +42,6 @@ export default function Stays() {
             <div className="chapter__body wrap">
               <div className="chapter__main">
                 <p className="eyebrow eyebrow--gold">
-                  <span className="chapter__index">{String(i + 1).padStart(2, "0")} / {String(stays.length).padStart(2, "0")}</span>
                   {s.location} · {s.landscape}
                 </p>
                 <h3 id={`stay-${s.slug}`} className="chapter__name">

@@ -51,11 +51,6 @@ export default function Experiences() {
           ))}
         </ul>
       </div>
-
-      {/* Soft curved edge into the next section */}
-      <svg className="exp__wave" viewBox="0 0 1440 160" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M0,70 C320,150 620,10 920,60 C1140,98 1300,120 1440,80 L1440,160 L0,160 Z" />
-      </svg>
     </section>
   );
 }

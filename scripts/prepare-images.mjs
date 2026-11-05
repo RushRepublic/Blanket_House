@@ -44,6 +44,9 @@ const PICKS = {
   'journal-forest-thumb': 'Blanket Days Thekkady/Experiences/Herping Tour/DSC02611.jpg',
   'journal-seasons-thumb': 'Blanket Munnar/Blanket Munnar/Garden/BLANKET 31.jpg',
 
+  // Stays section intro background
+  'stays-head-waterfall': 'Blanket Riverside Munnar/Blanket Riverside Exterior View/RIVERSIDE 86.jpg',
+
   'responsible-bamboo': 'Blanket Riverside Munnar/Blanket Riverside Activities/Nature Walk/Nature Walk - Bamboo Forest.jpg',
   'plan-riverside-night': 'Blanket Riverside Munnar/Blanket Riverside Exterior View/RIVERSIDE 133.jpg',
 
@@ -83,6 +86,9 @@ const PICKS = {
   'm-watch-tower': 'Blanket Riverside Munnar/Blanket Riverside Activities/Watch Tower/Watch Tower Experience.JPG',
   'm-pool-villa-view': 'Blanket Riverside Munnar/Blanket Riverside Rooms/Riverside Pool Villa/RIVERSIDE 121.jpg',
   'm-pavillion-bath': 'Blanket Days Thekkady/Rooms/Blanket Pavillion/NPS00469.jpg',
+  'm-outdoor-games': 'Blanket Riverside Munnar/Blanket Riverside Activities/Outdoor Games.jpg',
+  'm-viewpoint-umbrella': 'Blanket Munnar/Blanket Munnar/Infinity Pool/(28).jpg',
+  'm-oven-pizza': 'Blanket Days Thekkady/Facilities/The Oven Pizza Counter/NPS09613.jpg',
 };
 
 function findSource(rel) {

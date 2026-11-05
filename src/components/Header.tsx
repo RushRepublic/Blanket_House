@@ -79,18 +79,6 @@ export default function Header() {
   return (
     <>
       <header className={state}>
-        <div className="topbar">
-          <div className="topbar__inner">
-            <span>{site.tagline}</span>
-            <span className="topbar__meta">
-              <span>English</span>
-              <span>INR</span>
-              <a href="#plan">WhatsApp {site.whatsapp}</a>
-              <span>{site.phone}</span>
-            </span>
-          </div>
-        </div>
-
         <div className="site-header__inner">
           <button
             type="button"

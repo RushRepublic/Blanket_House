@@ -109,7 +109,7 @@ export const experiences = [
     tags: ["Herping tour", "Nature walk", "Watch tower"],
   },
   {
-    title: "Local culture & craft",
+    title: "Local culture & craft",
     text: "Kerala attire, kolam and mehendi, taught by the people who keep these traditions alive.",
     image: img.expCultureAttire,
     alt: "Host draping a guest in a traditional Kerala kasavu saree",
@@ -117,7 +117,7 @@ export const experiences = [
   },
   {
     title: "Food & plantations",
-    text: "Walk the cardamom and pepper gardens with our chef, then taste what you picked.",
+    text: "Walk the cardamom, pepper and coffee plantations with a naturalist, then end at the wood-fired drying chamber.",
     image: img.expFoodSpiceGarden,
     alt: "Chef gathering spices among cardamom plants in the resort garden",
     tags: ["Spice plantation walk", "Tea tasting", "Cooking demonstration"],
@@ -131,10 +131,10 @@ export const experiences = [
   },
   {
     title: "Adventure & play",
-    text: "Rope walks through the canopy, archery, cycling and bamboo rafting on the river.",
+    text: "Rope walks through the canopy, archery, cycling, bamboo rafting and jeep safaris into the high ranges.",
     image: img.expAdventureRope,
     alt: "Guest crossing a rope bridge through the forest canopy",
-    tags: ["Rope activities", "Archery", "Bamboo rafting"],
+    tags: ["Rope activities", "Archery", "Bamboo rafting", "Jeep safari"],
   },
 ];
 
@@ -189,10 +189,10 @@ export const journey = {
   subtitle: "Munnar to Thekkady",
   // `at` is where the stop sits along the road (0 = start, 1 = end).
   stops: [
-    { label: "Blanket Riverside", place: "Munnar", detail: "[N] nights · bamboo rafting and tea tasting", at: 0, image: img.stayRiversideAerial, alt: "Blanket Riverside villas above the river" },
-    { label: "Blanket Hotel & Spa", place: "Munnar", detail: "[N] nights · waterfall views and Ayurveda", at: 0.24, image: img.stayMunnarClouds, alt: "Blanket Hotel rising out of the cloud" },
-    { label: "The drive south", place: "On the road", detail: "Spice estates and forest roads · [route and drive time]", at: 0.6, image: img.expFoodSpiceGarden, alt: "Cardamom plants in a spice garden" },
-    { label: "Blanket Days", place: "Thekkady", detail: "[N] nights · herping tour and spice walk", at: 1, image: img.stayDaysAerial, alt: "Blanket Days among the forest trees in Thekkady" },
+    { label: "Blanket Riverside", place: "Munnar", detail: "Bamboo rafting and tea tasting", at: 0, image: img.stayRiversideAerial, alt: "Blanket Riverside villas above the river" },
+    { label: "Blanket Hotel & Spa", place: "Munnar", detail: "Waterfall views and Ayurveda", at: 0.24, image: img.stayMunnarClouds, alt: "Blanket Hotel rising out of the cloud" },
+    { label: "The drive south", place: "On the road", detail: "Spice estates and forest roads", at: 0.6, image: img.expFoodSpiceGarden, alt: "Cardamom plants in a spice garden" },
+    { label: "Blanket Days", place: "Thekkady", detail: "Herping tour and spice walk", at: 1, image: img.stayDaysAerial, alt: "Blanket Days among the forest trees in Thekkady" },
   ],
   // Small landscape names written along the road.
   landmarks: [
@@ -216,17 +216,20 @@ export const moments = [
     { image: img.mDeckMist, alt: "Guest on the hilltop deck as mist rises from the valley" },
     { image: img.mKeralaCurry, alt: "Kerala curry served with whole spices" },
     { image: img.mHorseRide, alt: "Horse ride along the garden path beside the river" },
+    { image: img.mOvenPizza, alt: "Chef sliding a pizza from the wood-fired oven as a guest watches" },
     { image: img.mCandleGazebo, alt: "Candlelit dinner in a forest gazebo at night" },
   ],
   [
     { image: img.mPicnicMist, alt: "Family picnic on the hillside in the mist" },
     { image: img.mPoolSplash, alt: "Guests splashing in the infinity pool" },
     { image: img.mMehendi, alt: "Mehendi being drawn on a guest's hand" },
+    { image: img.mOutdoorGames, alt: "Guests playing badminton on the lawn" },
     { image: img.mWatchTower, alt: "Silhouette of a guest on the watch tower" },
   ],
   [
     { image: img.mYoga, alt: "Morning yoga on the deck above the valley" },
     { image: img.mTeaTasting, alt: "Tea tasting with a local host" },
+    { image: img.mViewpointUmbrella, alt: "Couple at a viewpoint over the valley, sheltering under an umbrella" },
     { image: img.mPoolRain, alt: "Couple under an umbrella at the pool in the monsoon cloud" },
     { image: img.mParradice, alt: "Guest at the thatched Parradice bar in the garden" },
   ],

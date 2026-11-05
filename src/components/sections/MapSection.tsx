@@ -64,7 +64,10 @@ export default function MapSection() {
               </li>
             ))}
           </ul>
-          <p className="map__note placeholder">[Travel time between stays]</p>
+          <p className="map__note">
+            Blanket Riverside and Blanket Hotel &amp; Spa sit minutes apart in the Munnar hills; Blanket Days is a scenic
+            drive south through spice country to Thekkady.
+          </p>
         </div>
 
         <figure className="map__figure" data-map>
@@ -88,7 +91,6 @@ export default function MapSection() {
               <circle cx={airport.x} cy={airport.y} r={5} />
               <text x={airport.x + 12} y={airport.y + 4}>Cochin International Airport</text>
             </g>
-            <text className="map__sea" x={18} y={H - 24}>← Arabian Sea</text>
             {pins.map((p) => (
               <g key={p.name} className="map__pin" transform={`translate(${p.x} ${p.y})`}>
                 <circle className="map__pulse" r={14} />
