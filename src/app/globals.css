@@ -540,10 +540,9 @@ em { font-style: italic; }
 .moments__col:nth-child(2) { margin-top: 22vh; }
 .moments__col:nth-child(3) { margin-top: -8vh; }
 .moments__col:nth-child(4) { margin-top: 12vh; }
-.moments__item { position: relative; aspect-ratio: 4 / 5; overflow: hidden; filter: saturate(0.9) brightness(0.8); transition: filter 0.6s var(--ease); }
-.moments__item:nth-child(3n + 2) { aspect-ratio: 1; }
+.moments__item { position: relative; overflow: hidden; border-radius: 4px; filter: saturate(0.9) brightness(0.8); transition: filter 0.6s var(--ease); }
 .moments__item:hover { filter: none; }
-.moments__item img { object-fit: cover; }
+.moments__item img { display: block; width: 100%; height: auto; }
 
 /* ==========================================================================
    Destinations — season guide
@@ -678,7 +677,7 @@ em { font-style: italic; }
 .resp { min-height: 100svh; display: flex; align-items: center; overflow: hidden; padding-block: clamp(120px, 14vw, 200px); }
 .resp .backdrop__shade {
   background:
-    linear-gradient(180deg, rgba(7, 14, 10, 0.8) 0%, transparent 22%, transparent 78%, rgba(15, 26, 20, 0.97) 100%),
+    linear-gradient(180deg, rgba(6, 12, 9, 0.92) 0%, rgba(7, 14, 10, 0.55) 18%, transparent 40%, transparent 78%, rgba(15, 26, 20, 0.97) 100%),
     linear-gradient(100deg, rgba(10, 18, 14, 0.88) 0%, rgba(10, 18, 14, 0.6) 45%, rgba(10, 18, 14, 0.25) 100%);
 }
 .resp__inner { display: grid; justify-items: start; }
@@ -765,6 +764,7 @@ em { font-style: italic; }
 .footer { background: var(--ink); color: var(--faint); padding-top: clamp(72px, 9vw, 120px); overflow: hidden; font-size: 0.95rem; }
 .footer__grid { display: grid; grid-template-columns: minmax(0, 1.6fr) repeat(4, minmax(0, 1fr)); gap: 40px; }
 .footer__brand { display: grid; gap: 18px; align-content: start; }
+.footer__brand .logo__mark { height: 78px; }
 .footer__brand address { font-style: italic; }
 .footer__title { color: var(--ivory); font-weight: 700; font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 18px; }
 .footer__col ul { display: grid; gap: 10px; }

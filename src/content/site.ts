@@ -224,7 +224,6 @@ export const moments = [
     { image: img.mPoolSplash, alt: "Guests splashing in the infinity pool" },
     { image: img.mMehendi, alt: "Mehendi being drawn on a guest's hand" },
     { image: img.mOutdoorGames, alt: "Guests playing badminton on the lawn" },
-    { image: img.mWatchTower, alt: "Silhouette of a guest on the watch tower" },
   ],
   [
     { image: img.mYoga, alt: "Morning yoga on the deck above the valley" },

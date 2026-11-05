@@ -20,7 +20,7 @@ export default function Moments() {
           <ul key={c} className="moments__col" data-drift={[-14, 12, -20, 16][c]}>
             {col.map((m) => (
               <li key={m.alt} className="moments__item">
-                <Image src={m.image} alt={m.alt} fill placeholder="blur" sizes="(max-width: 900px) 50vw, 25vw" />
+                <Image src={m.image} alt={m.alt} placeholder="blur" sizes="(max-width: 900px) 50vw, 25vw" />
               </li>
             ))}
           </ul>
