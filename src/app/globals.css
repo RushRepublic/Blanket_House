@@ -822,6 +822,13 @@ em { font-style: italic; }
 }
 
 @media (max-width: 900px) {
+  /* The single-line, fixed-size headings above are sized for desktop; let them wrap
+     at their normal responsive size again once the viewport gets too narrow for them. */
+  .journey .h2, .offers .h2, .journal__head .h2, .plan__title {
+    font-size: var(--fs-h2); max-width: 14ch; white-space: normal;
+  }
+  .journey__feature-title, .offers__seasonal-title, .offers__list h3 { font-size: var(--fs-h3); white-space: normal; }
+
   .intro__float--a { left: auto; right: 6%; top: 6%; width: 38vw; }
   .intro__float--b { display: none; }
   .intro__copy { margin-left: 0; }
@@ -842,7 +849,7 @@ em { font-style: italic; }
   .chapter__body { padding-bottom: 40px; }
   .chapter-dwell { height: 35svh; }
   .chapter__facts { grid-template-columns: minmax(0, 1fr); gap: 12px; }
-  .chapter__ghost { font-size: 26vw; }
+  .chapter__ghost { font-size: 12vw; }
 
   .moments__cols { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .moments__col:nth-child(n + 3) { display: none; }
