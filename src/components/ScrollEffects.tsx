@@ -12,7 +12,6 @@ import { gsap, ScrollTrigger, SplitText, useGSAP, EASE } from "@/lib/gsap";
   data-read       words brighten as the statement is scrolled past
   data-lands      forest → river → hills sequence (pinned)
   data-route      journey line draws itself
-  data-journal    background photo follows the story in view
   data-map        map contours, route and pins draw in
   data-drift      photo-wall columns move at different speeds
 
@@ -203,16 +202,14 @@ export default function ScrollEffects() {
           scrollTrigger: { trigger: ".moments", start: "top 40%", once: true },
         });
 
-        /* ---------- Journal: titles slide in from the side ---------- */
-        gsap.utils.toArray<HTMLElement>(".story").forEach((story) => {
-          gsap.from(story.querySelectorAll("a > *"), {
-            x: -60,
-            autoAlpha: 0,
-            stagger: 0.08,
-            duration: 1.2,
-            ease: EASE,
-            scrollTrigger: { trigger: story, start: "top 75%", once: true },
-          });
+        /* ---------- Journal: cards fade up into place ---------- */
+        gsap.from(".story-card", {
+          y: 40,
+          autoAlpha: 0,
+          stagger: 0.1,
+          duration: 1.1,
+          ease: EASE,
+          scrollTrigger: { trigger: ".journal__carousel", start: "top 80%", once: true },
         });
 
         /* ---------- Map: contours sketch in, then the route, then the pins drop ---------- */
@@ -243,23 +240,6 @@ export default function ScrollEffects() {
 
     // Journal background follows the story in the middle of the screen (works with or without motion).
     // Created after the pinned sections above it, so its positions include their extra scroll length.
-    const journal = document.querySelector<HTMLElement>("[data-journal]");
-    if (journal) {
-      const bgs = journal.querySelectorAll<HTMLElement>("[data-bg]");
-      journal.querySelectorAll<HTMLElement>("[data-story]").forEach((story) => {
-        ScrollTrigger.create({
-          trigger: story,
-          start: "top 60%",
-          end: "bottom 40%",
-          onToggle: (self) => {
-            if (!self.isActive) return;
-            bgs.forEach((bg) => bg.classList.toggle("is-active", bg.dataset.bg === story.dataset.story));
-            story.parentElement?.querySelectorAll("[data-story]").forEach((s) => s.classList.toggle("is-active", s === story));
-          },
-        });
-      });
-    }
-
     // Measure every trigger in page order, so ones set up early still account for the pinned sections above them.
     ScrollTrigger.sort();
     ScrollTrigger.refresh();

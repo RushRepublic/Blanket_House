@@ -624,37 +624,53 @@ em { font-style: italic; }
 /* ==========================================================================
    Journal — background follows the story in view
    ========================================================================== */
-.journal { background: var(--ink); }
-.journal__bg { position: sticky; top: 0; height: 100svh; margin-bottom: -100svh; z-index: -1; overflow: hidden; }
-.journal__bg-img { position: absolute; inset: 0; opacity: 0; transform: scale(1.08); transition: opacity 1.2s var(--ease), transform 2.6s var(--ease); }
-.journal__bg-img.is-active { opacity: 1; transform: scale(1); }
-.journal__bg-img img { object-fit: cover; }
-.journal__shade { position: absolute; inset: 0; background: linear-gradient(100deg, rgba(8, 15, 11, 0.9), rgba(8, 15, 11, 0.55) 55%, rgba(8, 15, 11, 0.35)); }
-.journal__list { position: relative; }
-.journal__head { min-height: 70svh; display: grid; align-content: center; justify-items: start; gap: 4px; padding-top: var(--header-h); }
-.journal__head .h2 { max-width: none; white-space: nowrap; margin-bottom: 20px; font-size: 38px; }
-.story { min-height: 85svh; display: flex; align-items: center; }
-.story:last-child { padding-bottom: 10vh; }
-.story a {
-  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: "num cat thumb" "num title thumb" "num link thumb";
-  column-gap: clamp(20px, 4vw, 64px); align-items: center; width: 100%;
-  opacity: 0.45; transition: opacity 0.8s var(--ease);
+.journal .backdrop__shade {
+  background:
+    linear-gradient(to bottom, rgba(7, 14, 10, 0.72) 0%, rgba(8, 16, 12, 0.6) 32%, rgba(6, 13, 9, 0.85) 68%, rgba(5, 11, 8, 0.93) 100%),
+    rgba(6, 13, 9, 0.35);
 }
-.story.is-active a, .story a:hover { opacity: 1; }
-.story__num { grid-area: num; align-self: start; font-family: var(--font-display); font-style: italic; font-size: clamp(1.4rem, 2vw, 2rem); color: var(--gold); }
-.story .eyebrow { grid-area: cat; margin-bottom: 4px; }
-.story__title { grid-area: title; font-family: var(--font-display); font-weight: 500; font-size: var(--fs-h3); line-height: 1.04; text-wrap: balance; max-width: 16ch; }
-.story .text-link { grid-area: link; justify-self: start; margin-top: 20px; }
-.story__thumb {
-  grid-area: thumb; position: relative; width: clamp(160px, 18vw, 300px); aspect-ratio: 4 / 5; overflow: hidden;
+.journal { background: var(--ink); min-height: 100svh; display: flex; align-items: center; overflow: hidden; padding-block: calc(var(--header-h) + clamp(24px, 4vh, 48px)) clamp(32px, 5vh, 56px); }
+.journal__inner { display: grid; gap: clamp(20px, 3vh, 32px); }
+.journal__head { display: grid; justify-items: start; gap: 4px; max-width: 42rem; }
+.journal__head .h2 { max-width: none; white-space: nowrap; margin-bottom: 10px; font-size: 38px; line-height: 1.2; padding-bottom: 0.08em; }
+
+.journal__filters { display: flex; flex-wrap: wrap; align-items: center; gap: 8px clamp(14px, 2vw, 28px); }
+.journal__filter {
+  background: none; border: 0; cursor: pointer; padding: 6px 2px;
+  font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--faint);
+  border-bottom: 1px solid transparent; transition: color 0.3s, border-color 0.3s;
+}
+.journal__filter:hover { color: var(--ivory); }
+.journal__filter.is-active { color: var(--gold); border-bottom-color: var(--gold); }
+
+.journal__carousel {
+  display: flex; gap: clamp(18px, 2.4vw, 28px); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+  margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); scroll-padding-inline: var(--gutter); padding-bottom: 4px;
+}
+.journal__carousel::-webkit-scrollbar { display: none; }
+.story-card { flex: 0 0 clamp(200px, 22vw, 280px); scroll-snap-align: start; margin: 0; padding: 0; list-style: none; }
+.story-card a {
+  display: block; width: 100%; max-width: 100%; margin: 0; padding: 0;
+  text-align: left; box-sizing: border-box;
+}
+.story-card__frame {
+  display: block; position: relative; width: 100%; aspect-ratio: 4 / 3; overflow: hidden; margin: 0 0 10px; padding: 0;
   border-radius: 6px; border: 1px solid rgba(201, 161, 90, 0.5);
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45), 0 0 0 6px rgba(10, 18, 14, 0.4);
-  transition: transform 0.6s var(--ease), box-shadow 0.6s var(--ease);
+  box-shadow: 0 24px 54px rgba(0, 0, 0, 0.45);
+  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
 }
-.story__thumb::after { content: ""; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 1px rgba(234, 226, 218, 0.14); pointer-events: none; }
-.story__thumb img { object-fit: cover; transition: transform 1.4s var(--ease); }
-.story a:hover .story__thumb { transform: translateY(-6px); box-shadow: 0 40px 90px rgba(0, 0, 0, 0.55), 0 0 0 6px rgba(10, 18, 14, 0.4); }
-.story a:hover .story__thumb img { transform: scale(1.06); }
+.story-card__frame img { object-fit: cover; transition: transform 1.4s var(--ease); }
+.story-card a:hover .story-card__frame { transform: translateY(-6px); box-shadow: 0 32px 64px rgba(0, 0, 0, 0.55); }
+.story-card a:hover .story-card__frame img { transform: scale(1.06); }
+.story-card__category {
+  display: block; width: 100%; margin: 0; padding: 0;
+  font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold);
+}
+.story-card__title {
+  display: block; width: 100%; margin: 4px 0 0; padding: 0;
+  font-family: var(--font-display); font-weight: 500; font-size: clamp(1.3rem, 1.8vw, 1.7rem); line-height: 1.15; text-wrap: balance;
+}
+.story-card a .text-link { display: inline-block; margin: 8px 0 0; padding: 0; }
 
 /* ==========================================================================
    Responsible Blanket
@@ -662,7 +678,7 @@ em { font-style: italic; }
 .resp { min-height: 100svh; display: flex; align-items: center; overflow: hidden; padding-block: clamp(120px, 14vw, 200px); }
 .resp .backdrop__shade {
   background:
-    linear-gradient(180deg, transparent 0%, transparent 82%, rgba(15, 26, 20, 0.97) 100%),
+    linear-gradient(180deg, rgba(7, 14, 10, 0.8) 0%, transparent 22%, transparent 78%, rgba(15, 26, 20, 0.97) 100%),
     linear-gradient(100deg, rgba(10, 18, 14, 0.88) 0%, rgba(10, 18, 14, 0.6) 45%, rgba(10, 18, 14, 0.25) 100%);
 }
 .resp__inner { display: grid; justify-items: start; }
@@ -828,6 +844,12 @@ em { font-style: italic; }
     font-size: var(--fs-h2); max-width: 14ch; white-space: normal;
   }
   .journey__feature-title, .offers__seasonal-title, .offers__list h3 { font-size: var(--fs-h3); white-space: normal; }
+  .journal { min-height: 0; padding-block: calc(var(--header-h) + 20px) 28px; }
+  .journal__inner { gap: 16px; }
+  .journal__head .h2 { margin-bottom: 4px; }
+  .story-card { flex-basis: 74vw; }
+  .story-card__frame { aspect-ratio: 3 / 2; }
+  .story-card__title { font-size: clamp(1.1rem, 4.5vw, 1.3rem); }
 
   .intro__float--a { left: auto; right: 6%; top: 6%; width: 38vw; }
   .intro__float--b { display: none; }
@@ -862,9 +884,6 @@ em { font-style: italic; }
   .journey { padding-block: 104px 80px; }
   .offers__seasonal { margin-top: 32px; }
 
-  .story { min-height: 70svh; }
-  .story a { grid-template-columns: auto minmax(0, 1fr); grid-template-areas: "num thumb" "num cat" "num title" "num link"; row-gap: 8px; }
-  .story__thumb { width: min(70vw, 300px); aspect-ratio: 4 / 3; margin-bottom: 16px; }
 
   .footer__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .footer__brand { grid-column: 1 / -1; }
@@ -918,13 +937,11 @@ em { font-style: italic; }
   .hero { min-height: 0; padding-top: calc(var(--header-h) + 24px); }
   .hero__title { font-size: clamp(2.6rem, 8vw, 4rem); }
   .hero__booking { display: none; }
-  .intro, .journey, .offers, .resp, .reviews { min-height: 0; }
+  .intro, .journey, .offers, .resp, .reviews, .journal { min-height: 0; }
   .lands__slide, .lands--anim .lands__stage { min-height: 0; }
   .chapter { height: auto; min-height: 100svh; position: relative; }
   .chapter__body { position: relative; padding-top: calc(var(--header-h) + 40px); }
   .seasons { min-height: 0; }
-  .story { min-height: 0; padding-block: 56px; }
-  .journal__head { min-height: 0; padding-block: 96px 24px; }
   .moments__head { height: auto; margin-bottom: 0; position: relative; padding-block: 40px; }
   .mobile-bar { padding-block: 6px; }
   .mobile-bar .btn { min-height: 40px; }
