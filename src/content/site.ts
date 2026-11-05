@@ -255,7 +255,7 @@ export const journal = [
     image: img.journalTeaHills,
     alt: "Tea estates folding across the hills of Munnar",
     thumb: img.journalTeaHillsThumb,
-    thumbAlt: "Waterfall cutting through Munnar's tea gardens from above",
+    thumbAlt: "Blanket Hotel perched on the ridge above a waterfall, wrapped in cloud and tea gardens",
   },
   {
     category: "Wildlife",
@@ -271,7 +271,7 @@ export const journal = [
     image: img.journalMonsoonGarden,
     alt: "Lamp-lit garden path disappearing into monsoon mist",
     thumb: img.journalSeasonsThumb,
-    thumbAlt: "Guest in the garden as monsoon mist rolls over the tea fields",
+    thumbAlt: "Lamp-lit villas above the river weir at dusk in Munnar",
   },
 ];
 

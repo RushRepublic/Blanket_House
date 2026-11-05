@@ -40,9 +40,9 @@ const PICKS = {
   'journal-monsoon-garden': 'Blanket Munnar/Blanket Munnar/Garden/BLANKET 29.jpg',
 
   // Journal card thumbnails — distinct from each story's background photo above
-  'journal-tea-hills-thumb': 'Blanket Munnar/Blanket Munnar/Exterior/BLANKET 2.jpg',
+  'journal-tea-hills-thumb': 'Blanket Munnar/Blanket Munnar/Exterior/BLANKET 40.jpg',
   'journal-forest-thumb': 'Blanket Days Thekkady/Experiences/Herping Tour/DSC02611.jpg',
-  'journal-seasons-thumb': 'Blanket Munnar/Blanket Munnar/Garden/BLANKET 31.jpg',
+  'journal-seasons-thumb': 'Blanket Riverside Munnar/Blanket Riverside Exterior View/RIVERSIDE 134.jpg',
 
   // Stays section intro background
   'stays-head-waterfall': 'Blanket Riverside Munnar/Blanket Riverside Exterior View/RIVERSIDE 86.jpg',
