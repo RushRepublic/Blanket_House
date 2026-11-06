@@ -33,6 +33,8 @@
 *::before,
 *::after { box-sizing: border-box; }
 
+.rush-theme { --font-display: var(--font-rush-display), var(--font-sans); }
+
 /* overflow-x: clip stops any decorative zoom from making the page scroll sideways (sticky still works). */
 html { -webkit-text-size-adjust: 100%; color-scheme: dark; overflow-x: clip; }
 html.is-locked { overflow: hidden; }
