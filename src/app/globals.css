@@ -380,7 +380,7 @@ em { font-style: italic; }
 .exp .backdrop__shade {
   background:
     radial-gradient(ellipse 52% 34% at 50% 27%, rgba(6, 12, 9, 0.6), transparent 72%),
-    linear-gradient(180deg, rgba(6, 12, 9, 0.72) 0%, rgba(6, 12, 9, 0.38) 26%, rgba(6, 12, 9, 0.18) 50%, rgba(10, 20, 15, 0.7) 80%, rgba(15, 26, 20, 0.85) 100%),
+    linear-gradient(180deg, rgba(5, 10, 7, 0.95) 0%, rgba(6, 12, 9, 0.55) 16%, rgba(6, 12, 9, 0.3) 34%, rgba(6, 12, 9, 0.18) 50%, rgba(10, 20, 15, 0.7) 80%, rgba(15, 26, 20, 0.85) 100%),
     radial-gradient(130% 90% at 50% 45%, transparent 55%, rgba(4, 9, 6, 0.6) 100%),
     radial-gradient(45% 40% at 82% 8%, rgba(174, 137, 88, 0.16), transparent 70%);
 }
@@ -445,6 +445,20 @@ em { font-style: italic; }
 .exp-card__more-inner { overflow: hidden; display: grid; gap: 10px; padding-top: 12px; }
 .exp-card__text { font-size: var(--fs-body); color: var(--mist); max-width: 34ch; }
 .exp-card__tags { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }
+
+/* Rush layout variant: Experiences cards get a fine deckle (torn-paper) edge instead of a rounded rect */
+.rush-theme .exp-card {
+  border-radius: 0;
+  height: 100%;
+  -webkit-mask-image: url("/torn-edge.svg");
+  mask-image: url("/torn-edge.svg");
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  filter: drop-shadow(0 0 0 #5c8a4a) drop-shadow(0 0 1.5px #5c8a4a) drop-shadow(0 0 1.5px #5c8a4a);
+}
+.rush-theme .exp-card::after { display: none; }
 
 /* Desktop: only react when the cursor is on a card (not in the gaps between them) */
 @media (hover: hover) and (min-width: 901px) {
@@ -670,6 +684,19 @@ em { font-style: italic; }
   font-family: var(--font-display); font-weight: 500; font-size: clamp(1.3rem, 1.8vw, 1.7rem); line-height: 1.15; text-wrap: balance;
 }
 .story-card a .text-link { display: inline-block; margin: 8px 0 0; padding: 0; }
+
+/* Rush layout variant: Journal thumbnails get the same deckle (torn-paper) edge as the Experiences cards */
+.rush-theme .story-card__frame {
+  border: 0;
+  border-radius: 0;
+  -webkit-mask-image: url("/torn-edge.svg");
+  mask-image: url("/torn-edge.svg");
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  filter: drop-shadow(0 0 0 #5c8a4a) drop-shadow(0 0 1.5px #5c8a4a) drop-shadow(0 0 1.5px #5c8a4a);
+}
 
 /* ==========================================================================
    Responsible Blanket
