@@ -11,10 +11,10 @@ export default function Journeys() {
         <header className="journey__head">
           <p className="eyebrow eyebrow--gold">Journeys</p>
           <h2 id="journey-title" className="h2" data-split>
-            One trip, more than one Blanket
+            One journey, more than one Blanket
           </h2>
           <p className="journey__intro" data-fade>
-            Pair the river, the waterfall and the forest in a single trip, with transfers and experiences planned for you.
+            Experience the river, the waterfall and the forest in one memorable trip, with transfers and activities thoughtfully planned for you.
           </p>
           <p className="journey__feature" data-fade>
             <span className="eyebrow eyebrow--gold">Featured journey</span>

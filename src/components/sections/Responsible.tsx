@@ -9,10 +9,10 @@ export default function Responsible() {
       <div className="wrap resp__inner">
         <p className="eyebrow eyebrow--gold">Responsible Blanket</p>
         <h2 id="resp-title" className="h2 resp__title" data-split>
-          Looking after the places we stay in
+          Looking after the places we call home
         </h2>
         <p className="resp__lede" data-fade>
-          Our stays depend on healthy forests, rivers and communities. Here is how we work with them.
+          Our stays depend on healthy forests, rivers and communities. Here is how we care for them.
         </p>
         <dl className="resp__stats">
           {commitments.map((c) => (

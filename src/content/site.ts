@@ -51,7 +51,7 @@ export const stays: Stay[] = [
     location: "Thekkady",
     landscape: "Forest & wildlife",
     line: "Stays in the forest country of Thekkady, built around wildlife and quiet mornings.",
-    rooms: ["Blanket Nest", "Blanket Pavillion", "Blanket Elettaria", "Honeymoon Villa"],
+    rooms: ["Blanket Nest", "Blanket Pavillion", "Blanket Elettaria", "Blanket Honeymoon Villa"],
     highlights: ["Hilltop deck", "Infinity pool", "Ayurveda", "Herping tours"],
     image: img.stayDaysExteriorDrone,
     imageAlt: "Drone view of Blanket Days Resort & Spa, its cottages and infinity pool set inside dense forest in Thekkady",
@@ -114,14 +114,14 @@ export const experiences = [
   },
   {
     title: "Local culture & craft",
-    text: "Kerala attire, kolam and mehendi, taught by the people who keep these traditions alive.",
+    text: "Drape traditional Kerala attire, try your hand at kolam, and enjoy mehendi sessions hosted by local artisans.",
     image: img.expCultureAttire,
     alt: "Host draping a guest in a traditional Kerala kasavu saree",
     tags: ["Kerala attire", "Kolam", "Mehendi"],
   },
   {
     title: "Food & plantations",
-    text: "Walk the cardamom, pepper and coffee plantations with a naturalist, then end at the wood-fired drying chamber.",
+    text: "Walk through the cardamom, pepper and coffee plantations with a naturalist, then end with a visit at the wood-fired drying chamber.",
     image: img.expFoodSpiceGarden,
     alt: "Chef gathering spices among cardamom plants in the resort garden",
     tags: ["Spice plantation walk", "Tea tasting", "Cooking demonstration"],
@@ -264,7 +264,7 @@ export const moments = [
 
 export const offers = [
   { title: "Best available rate", text: "[Rate promise and terms]" },
-  { title: "A welcome extra", text: "[Complimentary experience, upgrade or credit]" },
+  { title: " A welcome treat", text: "[Complimentary experience, upgrade or credit]" },
   { title: "Flexible planning", text: "[Change and cancellation terms]" },
 ];
 

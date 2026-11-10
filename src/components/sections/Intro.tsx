@@ -1,7 +1,7 @@
 import Backdrop from "../Backdrop";
 import { img } from "@/content/images";
 
-const statement = "A different stay in every landscape, one way of being in nature.";
+const statement = "A different stay in every landscape. One way of being in nature.";
 
 export default function Intro() {
   return (
@@ -23,9 +23,7 @@ export default function Intro() {
             beside them. Choose a place first, then choose how you want to spend your days.
           </p>
           <p>
-            It began in 2017 with a single hotel above a waterfall in Munnar, built slowly and by hand out of respect
-            for terrain that doesn&apos;t welcome heavy machinery. That same instinct now shapes every Blanket address,
-            with a goal of 15 resorts across Kerala and its neighbouring states by 2030.
+            Our story began in 2017 with a single hotel above a waterfall in Munnar. Built slowly and by hand, it reflected our respect for a landscape where heavy machinery could do more harm than good. That same approach continues to guide every Blanket property, as we work towards our goal of 15 resorts across Kerala and neighbouring states by 2030.
           </p>
           <a href="#responsible" className="text-link text-link--light">Our story and commitments</a>
         </div>
