@@ -52,8 +52,8 @@ export const stays: Stay[] = [
     line: "Stays in the forest country of Thekkady, built around wildlife and quiet mornings.",
     rooms: ["Blanket Nest", "Blanket Pavillion", "Blanket Elettaria", "Honeymoon Villa"],
     highlights: ["Hilltop deck", "Infinity pool", "Ayurveda", "Herping tours"],
-    image: img.stayDaysAerial,
-    imageAlt: "Aerial view of Blanket Days Resort & Spa, its cottages and infinity pool set inside dense forest in Thekkady",
+    image: img.stayDaysExteriorDrone,
+    imageAlt: "Drone view of Blanket Days Resort & Spa, its cottages and infinity pool set inside dense forest in Thekkady",
     gallery: [
       { image: img.stayDaysNest, alt: "Thatched Blanket Nest tree house rising above the forest canopy", caption: "Blanket Nest" },
       { image: img.daysNestWalkway, alt: "Wooden walkway leading through the trees to a Blanket Nest", caption: "The walk in" },
@@ -70,8 +70,8 @@ export const stays: Stay[] = [
     line: "A riverside stay in Munnar's hills, close to plantations, bamboo forest and local life.",
     rooms: ["Riverside Pool Villa", "Riverside Grove Villa", "Garden Cascade Villa"],
     highlights: ["River Babble restaurant", "Riverside deck", "Bamboo rafting", "Tea tasting"],
-    image: img.stayRiversideAerial,
-    imageAlt: "Blanket Riverside villas on a green hillside above a calm river in Munnar",
+    image: img.stayRiversideExterior132,
+    imageAlt: "Exterior view of Blanket Riverside Resort & Spa on a green hillside above a calm river in Munnar",
     gallery: [
       { image: img.stayRiversideDeck, alt: "Lantern-lit riverside deck at dusk with mist over the valley", caption: "Riverside deck" },
       { image: img.riversidePoolVilla, alt: "Riverside Pool Villa with its private pool above the river", caption: "Pool Villa" },
@@ -88,8 +88,8 @@ export const stays: Stay[] = [
     line: "A hotel above the waterfall, wrapped in tea gardens and drifting cloud.",
     rooms: ["Blanket Presidential Suite", "Blanket Valley Club", "Blanket Camellia", "Honeymoon Pavilion"],
     highlights: ["Fall View restaurant", "Infinity pool", "Ayurveda", "Waterfall views"],
-    image: img.stayMunnarClouds,
-    imageAlt: "Blanket Hotel rising out of low cloud on a forested slope in Munnar",
+    image: img.stayMunnarExterior10,
+    imageAlt: "Blanket Hotel & Spa exterior among the tea hills and waterfall in Munnar",
     gallery: [
       { image: img.stayMunnarSuite, alt: "Bath beside a floor-to-ceiling window looking onto the waterfall", caption: "Presidential Suite" },
       { image: img.munnarSuiteBalcony, alt: "Guest on the Presidential Suite balcony above the waterfall", caption: "The balcony" },
@@ -103,9 +103,9 @@ export const experiences = [
   {
     title: "Nature & wildlife",
     text: "Herping tours after dark, birding at first light and forest walks with naturalists who grew up here.",
-    image: img.expNatureFrog,
-    alt: "Bush frog on a leaf, found on a night herping tour in Thekkady",
-    focus: "35% 88%", // keep the frog in frame on tall cards
+    image: img.journalForestBird,
+    alt: "Bird perched on a branch in the Thekkady forest",
+    focus: "50% 35%", // keep the bird in frame on tall cards
     tags: ["Herping tour", "Nature walk", "Watch tower"],
   },
   {
@@ -132,8 +132,8 @@ export const experiences = [
   {
     title: "Adventure & play",
     text: "Rope walks through the canopy, archery, cycling, bamboo rafting and jeep safaris into the high ranges.",
-    image: img.expAdventureRope,
-    alt: "Guest crossing a rope bridge through the forest canopy",
+    image: img.expAdventureRopeCanopy,
+    alt: "Guest on a rope activity through the forest canopy at Blanket Days",
     tags: ["Rope activities", "Archery", "Bamboo rafting", "Jeep safari"],
   },
 ];
@@ -183,6 +183,23 @@ export const seasons = [
 ];
 
 export const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+// One photo per month (index 0 = Jan) for the season guide's background, so every tab shows a
+// different image even where several months share the same season's written copy.
+export const monthImages: { image: typeof img.seasonWinter; alt: string }[] = [
+  { image: img.seasonWinter, alt: "Morning mist lifting off the river valley at Blanket Riverside" },
+  { image: img.landHills, alt: "Clear winter light over the tea hills of Munnar" },
+  { image: img.introCoffeeBlossom, alt: "Coffee blossom opening on the plantation in early spring" },
+  { image: img.seasonSummer, alt: "Family picnic on a green hilltop overlooking the Thekkady valley" },
+  { image: img.mOutdoorGames, alt: "Guests playing outdoor games on the lawn in the warm evening light" },
+  { image: img.landRiver, alt: "The river running full through the forest as the monsoon begins" },
+  { image: img.mPoolRain, alt: "Rain falling over the pool during the Kerala monsoon" },
+  { image: img.mDeckMist, alt: "Deck wrapped in monsoon mist over the forest canopy" },
+  { image: img.journalMonsoonGarden, alt: "Garden paths soaked green at the height of the monsoon" },
+  { image: img.landForest, alt: "Forest canopy washed clean as the monsoon eases" },
+  { image: img.journeyTeaValley, alt: "Tea valley under clearing skies in late autumn" },
+  { image: img.stayMunnarClouds, alt: "Blanket Hotel rising out of low cloud on a forested slope in Munnar" },
+];
 
 export const journey = {
   title: "Hills to forest",
@@ -275,9 +292,9 @@ export const journal = [
 ];
 
 export const commitments = [
-  { value: "[—]", label: "Nature and conservation measure" },
-  { value: "[—]", label: "Community and CSR measure" },
-  { value: "[—]", label: "Local sourcing measure" },
+  { value: "[12]", label: "Nature and conservation measure" },
+  { value: "[12]", label: "Community and CSR measure" },
+  { value: "[12]", label: "Local sourcing measure" },
 ];
 
 export const footerColumns = [

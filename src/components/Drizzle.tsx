@@ -113,9 +113,22 @@ export default function Drizzle() {
     raf = requestAnimationFrame(frame);
     canvas.classList.add("is-on");
 
+    // Hidden over the hero (its own video/shade reads better without rain over it); shown
+    // everywhere else on the page.
+    const hero = document.getElementById("top");
+    let io: IntersectionObserver | undefined;
+    if (hero) {
+      io = new IntersectionObserver(
+        ([entry]) => canvas.classList.toggle("is-hidden", entry.isIntersecting),
+        { threshold: 0.15 },
+      );
+      io.observe(hero);
+    }
+
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", resize);
+      io?.disconnect();
     };
   }, []);
 

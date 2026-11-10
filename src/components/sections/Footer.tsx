@@ -24,8 +24,6 @@ export default function Footer() {
         ))}
       </div>
 
-      <p className="footer__giant" aria-hidden="true">BLANKET</p>
-
       <div className="wrap footer__legal">
         <span>© {new Date().getFullYear()} Blanket Hotels &amp; Resorts</span>
         <span className="footer__legal-links">

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { site, stays } from "@/content/site";
+import { stays } from "@/content/site";
 
 export default function BookingBar() {
   const [message, setMessage] = useState("");
@@ -49,9 +49,11 @@ export default function BookingBar() {
       <button type="submit" className="btn btn--gold booking__submit">
         Check availability
       </button>
-      <p className="booking__note" aria-live="polite">
-        {message || `Book direct for the best available rate and ${site.directBenefit}.`}
-      </p>
+      {message && (
+        <p className="booking__note" aria-live="polite">
+          {message}
+        </p>
+      )}
     </form>
   );
 }

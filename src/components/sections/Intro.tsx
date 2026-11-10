@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Backdrop from "../Backdrop";
 import { img } from "@/content/images";
 
@@ -8,13 +7,6 @@ export default function Intro() {
   return (
     <section id="intro" className="intro dark" aria-labelledby="intro-title">
       <Backdrop image={img.introHilltopAerial} shade="full" parallax={0} />
-
-      <figure className="intro__float intro__float--a" aria-hidden="true">
-        <Image src={img.introCoffeeBlossom} alt="" fill placeholder="blur" sizes="(max-width: 900px) 40vw, 22vw" />
-      </figure>
-      <figure className="intro__float intro__float--b" aria-hidden="true">
-        <Image src={img.introPepperVine} alt="" fill placeholder="blur" sizes="(max-width: 900px) 30vw, 16vw" />
-      </figure>
 
       <div className="intro__stage wrap">
         <p className="eyebrow eyebrow--gold">Blanket Hotels &amp; Resorts</p>

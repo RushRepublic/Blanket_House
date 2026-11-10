@@ -5,7 +5,6 @@ import Drizzle from "@/components/Drizzle";
 import StructuredData from "@/components/StructuredData";
 import Hero from "@/components/sections/Hero";
 import Intro from "@/components/sections/Intro";
-import Landscapes from "@/components/sections/Landscapes";
 import Experiences from "@/components/sections/Experiences";
 import Stays from "@/components/sections/Stays";
 import Moments from "@/components/sections/Moments";
@@ -29,11 +28,10 @@ export default function Home() {
       <main id="main">
         <Hero />
         <Intro />
-        <Landscapes />
-        <Experiences />
         <Stays />
-        <Moments />
         <Destinations />
+        <Experiences />
+        <Moments />
         <Journeys />
         <Offers />
         <Journal />

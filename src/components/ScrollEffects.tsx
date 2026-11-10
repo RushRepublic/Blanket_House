@@ -26,6 +26,26 @@ export default function ScrollEffects() {
     // ScrollTrigger. Clearing anything left over before building this instance's triggers avoids it.
     ScrollTrigger.getAll().forEach((st) => st.kill());
 
+    // Journeys road: stop/landmark positions come from the path's own geometry, so they need
+    // placing unconditionally (even for reduced-motion visitors, who skip the scrub animation
+    // below entirely) — otherwise they'd sit stacked at the SVG's origin.
+    const route = document.querySelector<SVGSVGElement>("[data-route]");
+    const routePath = route?.querySelector<SVGPathElement>(".journey-road__path");
+    if (route && routePath) {
+      const total = routePath.getTotalLength();
+      const place = (el: Element | null, at: number) => {
+        if (!el) return;
+        const pt = routePath.getPointAtLength(at * total);
+        el.setAttribute("transform", `translate(${pt.x} ${pt.y})`);
+      };
+      route.querySelectorAll<SVGGElement>(".journey-road__stop, .journey-road__mark").forEach((el) => {
+        place(el, parseFloat(el.dataset.at || "0"));
+      });
+      place(route.querySelector(".journey-road__car"), 1);
+      routePath.style.strokeDasharray = `${total}`;
+      routePath.style.strokeDashoffset = "0";
+    }
+
     const mm = gsap.matchMedia();
 
     mm.add(
@@ -86,18 +106,24 @@ export default function ScrollEffects() {
           .to(".hero__content", { yPercent: -25, autoAlpha: 0, ease: "none" }, 0)
           .to(".hero__booking", { yPercent: -40, autoAlpha: 0, ease: "none" }, 0);
 
-        /* ---------- Intro: pinned; the statement brightens word by word ---------- */
+        /* ---------- Intro: pinned; the statement is fully legible by the time the section
+           arrives, then brightens its last touch while pinned ---------- */
         const words = gsap.utils.toArray<HTMLElement>(".intro .read-w");
         if (desktop) {
+          // Finishes brightening the words while the section is still scrolling into place,
+          // well before the pin below engages — so the heading is never stuck half-dim on arrival.
+          gsap.fromTo(words, { opacity: 0.45 }, {
+            opacity: 1,
+            stagger: 0.03,
+            ease: "none",
+            scrollTrigger: { trigger: ".intro", start: "top 95%", end: "top 55%", scrub: true },
+          });
           gsap
             .timeline({
-              scrollTrigger: { trigger: ".intro", start: "top top", end: "+=160%", pin: true, scrub: 0.6 },
+              scrollTrigger: { trigger: ".intro", start: "top top", end: "+=55%", pin: true, scrub: 0.5 },
             })
             .fromTo(".intro .backdrop__img", { scale: 1.3 }, { scale: 1, ease: "none", duration: 1 }, 0)
-            .fromTo(words, { opacity: 0.14 }, { opacity: 1, stagger: 0.05, ease: "none", duration: 0.3 }, 0.05)
-            .fromTo(".intro__float--a", { yPercent: 70 }, { yPercent: -50, ease: "none", duration: 1 }, 0)
-            .fromTo(".intro__float--b", { yPercent: 140 }, { yPercent: -90, ease: "none", duration: 1 }, 0)
-            .from(".intro__copy", { y: 60, autoAlpha: 0, ease: "power2.out", duration: 0.3 }, 0.65);
+            .from(".intro__copy", { y: 40, autoAlpha: 0, ease: "power2.out", duration: 0.35 }, 0.08);
         } else {
           gsap.fromTo(words, { opacity: 0.14 }, {
             opacity: 1,
@@ -211,6 +237,46 @@ export default function ScrollEffects() {
           ease: EASE,
           scrollTrigger: { trigger: ".journal__carousel", start: "top 80%", once: true },
         });
+
+        /* ---------- Journeys: the section holds still while the road draws itself and the car
+           drives Munnar → Thekkady; the backdrop photo crossfades to whichever stop the car has
+           just reached (stop/landmark placement already happened above, unconditionally) ---------- */
+        if (route && routePath) {
+          const total = routePath.getTotalLength();
+          const car = route.querySelector<SVGGElement>(".journey-road__car");
+          routePath.style.strokeDashoffset = `${total}`;
+
+          const stopAts = Array.from(route.querySelectorAll<SVGGElement>(".journey-road__stop")).map((el) =>
+            parseFloat(el.dataset.at || "0"),
+          );
+          // A stop "owns" the car until it's closer to the next one than to itself.
+          const switchPoints = stopAts.slice(1).map((at, i) => (stopAts[i] + at) / 2);
+          const bgImages = Array.from(document.querySelectorAll<HTMLElement>(".journey__bg-img"));
+          let activeStop = 0;
+
+          const proxy = { t: 0 };
+          gsap.to(proxy, {
+            t: 1,
+            ease: "none",
+            scrollTrigger: { trigger: ".journey", start: "top top", end: "+=160%", pin: true, scrub: 0.6 },
+            onUpdate: () => {
+              routePath.style.strokeDashoffset = `${total * (1 - proxy.t)}`;
+
+              const next = switchPoints.filter((p) => proxy.t >= p).length;
+              if (next !== activeStop) {
+                activeStop = next;
+                bgImages.forEach((img, i) => img.classList.toggle("is-active", i === activeStop));
+              }
+
+              if (!car) return;
+              const d = Math.min(0.999, proxy.t);
+              const pt = routePath.getPointAtLength(d * total);
+              const ahead = routePath.getPointAtLength((d + 0.001) * total);
+              const angle = Math.atan2(ahead.y - pt.y, ahead.x - pt.x) * (180 / Math.PI);
+              car.setAttribute("transform", `translate(${pt.x} ${pt.y}) rotate(${angle})`);
+            },
+          });
+        }
 
         /* ---------- Map: contours sketch in, then the route, then the pins drop ---------- */
         const map = document.querySelector<HTMLElement>("[data-map]");

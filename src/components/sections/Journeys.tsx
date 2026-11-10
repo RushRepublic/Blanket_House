@@ -1,10 +1,11 @@
-import Backdrop from "../Backdrop";
+import JourneyBackdrop from "../JourneyBackdrop";
+import JourneyRoad from "../JourneyRoad";
 import { journey } from "@/content/site";
 
 export default function Journeys() {
   return (
     <section id="journeys" className="journey dark" aria-labelledby="journey-title">
-      <Backdrop image={journey.image} alt={journey.alt} shade="left" parallax={0.2} />
+      <JourneyBackdrop />
 
       <div className="wrap journey__grid">
         <header className="journey__head">
@@ -26,6 +27,8 @@ export default function Journeys() {
             <a href="#plan" className="text-link text-link--light">Enquire</a>
           </div>
         </header>
+
+        <JourneyRoad />
       </div>
     </section>
   );

@@ -133,7 +133,7 @@ em { font-style: italic; }
 
 /* ---------- Logo ---------- */
 .logo { display: inline-flex; align-items: center; }
-.logo__mark { height: 48px; width: auto; }
+.logo__mark { height: 60px; width: auto; }
 .logo--light .logo__mark { height: 40px; }
 
 /* ---------- Full-bleed photo background ---------- */
@@ -268,8 +268,9 @@ em { font-style: italic; }
   padding-top: calc(var(--header-h) + 60px);
   background: var(--ink);
 }
-.hero__media { position: absolute; inset: 0; z-index: -2; will-change: transform; animation: heroOpen 1.8s var(--ease) both; }
-.hero__media img { object-fit: cover; animation: heroSettle 3s var(--ease) both; }
+.hero__media { position: absolute; inset: 0; z-index: -2; overflow: hidden; will-change: transform; animation: heroOpen 1.8s var(--ease) both; }
+.hero__media img, .hero__media video { object-fit: cover; width: 100%; height: 100%; animation: heroSettle 3s var(--ease) both; }
+.hero__media video { pointer-events: none; }
 .hero__shade {
   position: absolute; inset: 0; z-index: -1; opacity: 0.65;
   background: linear-gradient(to top, rgba(8, 15, 11, 0.95) 0%, rgba(8, 15, 11, 0.35) 45%, rgba(8, 15, 11, 0.12) 70%, rgba(8, 15, 11, 0.5) 100%);
@@ -293,7 +294,21 @@ em { font-style: italic; }
 }
 .hero__lede { max-width: 34rem; font-size: var(--fs-body); color: var(--mist); }
 .hero__ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 32px; }
-.hero__booking { padding-bottom: clamp(20px, 4vh, 40px); animation: fadeUp 1.4s var(--ease) 1.3s both; }
+.hero__booking {
+  position: relative; z-index: 5;
+  margin-top: clamp(-90px, -6vw, -60px); padding-bottom: clamp(20px, 4vh, 40px);
+  animation: fadeUp 1.4s var(--ease) 1.3s both;
+}
+.hero__mute {
+  position: fixed; z-index: 50; right: clamp(16px, 3vw, 28px); bottom: clamp(16px, 3vw, 28px);
+  width: 44px; height: 44px; display: grid; place-items: center; padding: 0; border: 0;
+  border-radius: 50%;
+  background: rgba(8, 15, 11, 0.45); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  color: var(--ivory); cursor: pointer; transition: background 0.3s;
+  animation: fadeUp 1.2s var(--ease) 1.1s both;
+}
+.hero__mute:hover { background: rgba(8, 15, 11, 0.65); }
+.hero__mute svg { width: 20px; height: 20px; }
 .hero__scroll {
   position: absolute; right: var(--gutter); top: 50%;
   display: flex; flex-direction: column; align-items: center; gap: 14px;
@@ -332,14 +347,20 @@ em { font-style: italic; }
    ========================================================================== */
 .intro { min-height: 100svh; display: flex; align-items: center; overflow: hidden; }
 .intro .backdrop__img { transform-origin: center; }
-.intro .backdrop__shade { background: linear-gradient(100deg, rgba(8, 15, 11, 0.72) 0%, rgba(8, 15, 11, 0.38) 55%, rgba(8, 15, 11, 0.2) 100%); }
-.intro__stage { position: relative; z-index: 2; padding-block: clamp(120px, 14vh, 180px); }
+/* The top fade blends the hard line where the hero/booking area ends and the intro backdrop
+   begins; the horizontal gradient underneath is the original one for text legibility. */
+.intro .backdrop__shade {
+  background:
+    linear-gradient(to bottom, var(--ink) 0%, transparent 12%),
+    linear-gradient(100deg, rgba(8, 15, 11, 0.72) 0%, rgba(8, 15, 11, 0.38) 55%, rgba(8, 15, 11, 0.2) 100%);
+}
+.intro__stage { position: relative; z-index: 2; padding-block: clamp(60px, 7vh, 100px); }
 .intro__statement {
   font-family: var(--font-display); font-weight: 500;
-  font-size: 38px; line-height: 1.1; letter-spacing: -0.015em;
+  font-size: clamp(40px, 4.6vw, 60px); line-height: 1.1; letter-spacing: -0.015em;
   max-width: 15ch; text-wrap: balance;
 }
-.intro__copy { display: grid; gap: 18px; justify-items: start; max-width: 30rem; margin: clamp(32px, 6vh, 64px) 0 0 auto; }
+.intro__copy { display: grid; gap: 14px; justify-items: start; max-width: 30rem; margin: clamp(20px, 3.5vh, 36px) 0 0 auto; }
 .intro__lede { font-size: var(--fs-body); line-height: 1.55; color: var(--mist); }
 .intro__float { position: absolute; z-index: 1; overflow: hidden; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35); }
 .intro__float img { object-fit: cover; }
@@ -448,7 +469,7 @@ em { font-style: italic; }
 .exp-card__tags { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); }
 
 /* Rush layout variant: Experiences cards get a fine deckle (torn-paper) edge instead of a rounded rect */
-.rush-theme .exp-card {
+.exp-card {
   border-radius: 0;
   height: 100%;
   -webkit-mask-image: url("/torn-edge.svg");
@@ -457,9 +478,9 @@ em { font-style: italic; }
   mask-size: 100% 100%;
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
-  filter: drop-shadow(0 0 0 #5c8a4a) drop-shadow(0 0 1.5px #5c8a4a) drop-shadow(0 0 1.5px #5c8a4a);
+  filter: drop-shadow(0 0 0 #d8b273) drop-shadow(0 0 1.5px #d8b273) drop-shadow(0 0 1.5px #d8b273);
 }
-.rush-theme .exp-card::after { display: none; }
+.exp-card::after { display: none; }
 
 /* Desktop: only react when the cursor is on a card (not in the gaps between them) */
 @media (hover: hover) and (min-width: 901px) {
@@ -501,14 +522,14 @@ em { font-style: italic; }
 .chapter__shade {
   position: absolute; inset: 0; z-index: -1;
   background:
-    linear-gradient(to top, var(--ink) 0%, color-mix(in srgb, var(--mood) 94%, transparent) 6%, color-mix(in srgb, var(--mood) 45%, transparent) 45%, transparent 72%, color-mix(in srgb, var(--mood) 55%, transparent) 90%, var(--ink) 100%),
-    linear-gradient(to right, rgba(8, 15, 11, 0.45), transparent 60%);
+    linear-gradient(to top, var(--ink) 0%, color-mix(in srgb, var(--mood) 70%, transparent) 5%, transparent 30%, transparent 78%, color-mix(in srgb, var(--mood) 30%, transparent) 94%, var(--ink) 100%),
+    linear-gradient(to right, rgba(8, 15, 11, 0.22), transparent 45%);
 }
 .chapter__ghost {
   position: absolute; top: calc(var(--header-h) + 4vh); right: var(--gutter); z-index: -1;
   font-family: var(--font-display); font-weight: 500; font-size: min(11vw, 20vh, 13rem); line-height: 0.8;
   letter-spacing: 0.02em; text-transform: uppercase;
-  color: transparent; -webkit-text-stroke: 1.5px rgba(234, 226, 218, 0.34);
+  color: transparent; -webkit-text-stroke: 1.5px rgba(234, 226, 218, 0.6);
   pointer-events: none; white-space: nowrap;
 }
 .chapter__body {
@@ -531,7 +552,13 @@ em { font-style: italic; }
 /* ==========================================================================
    Moments — drifting photo wall
    ========================================================================== */
-.moments { background: var(--ink); overflow: hidden; padding-block: 12vh; }
+.moments { position: relative; background: var(--ink); overflow: hidden; padding-block: 12vh; }
+/* Eases the top of the gallery in from dark instead of cutting hard against the Experiences
+   section above it. */
+.moments::before {
+  content: ""; position: absolute; inset: 0 0 auto 0; z-index: 2; height: 22vh; pointer-events: none;
+  background: linear-gradient(to bottom, var(--ink) 0%, transparent 100%);
+}
 .moments__head {
   position: sticky; top: 0; z-index: 3; height: 100svh; margin-bottom: -100svh;
   display: grid; place-items: center; pointer-events: none;
@@ -571,7 +598,7 @@ em { font-style: italic; }
 .seasons__media img.is-active { opacity: 1; transform: scale(1); }
 .seasons__media::after {
   content: ""; position: absolute; inset: 0;
-  background: linear-gradient(to top, var(--ink) 0%, rgba(8, 15, 11, 0.55) 10%, rgba(8, 15, 11, 0.25) 55%, rgba(8, 15, 11, 0.55) 85%, rgba(15, 26, 20, 0.97) 100%);
+  background: linear-gradient(to top, var(--ink) 0%, rgba(8, 15, 11, 0.55) 10%, rgba(8, 15, 11, 0.25) 55%, rgba(8, 15, 11, 0.6) 88%, var(--ink) 100%);
 }
 .seasons__body {
   width: 100%; max-width: var(--max); margin-inline: auto;
@@ -607,7 +634,11 @@ em { font-style: italic; }
     linear-gradient(180deg, var(--ink) 0%, transparent 12%, transparent 100%),
     linear-gradient(100deg, rgba(10, 18, 14, 0.88) 0%, rgba(10, 18, 14, 0.6) 45%, rgba(10, 18, 14, 0.25) 100%);
 }
-.journey__grid { display: grid; }
+.journey__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 90px); align-items: center; }
+/* One photo per stop, stacked and crossfaded as the car on the road reaches each one
+   (ScrollEffects.tsx toggles .is-active). */
+.journey__bg-img { opacity: 0; transition: opacity 1.1s var(--ease); }
+.journey__bg-img.is-active { opacity: 1; }
 .journey__head { display: grid; align-content: start; justify-items: start; max-width: 42rem; }
 .journey__intro { margin-top: 22px; max-width: 32rem; color: var(--mist); font-size: var(--fs-body); }
 .journey__ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 30px; margin-top: 32px; }
@@ -615,6 +646,38 @@ em { font-style: italic; }
 .journey__feature .eyebrow { margin: 0; }
 .journey__feature-title { font-family: var(--font-display); font-size: 38px; line-height: 1.1; white-space: nowrap; }
 .journey__feature-title em { color: var(--gold); }
+
+/* ---- Journey road: a car travels this winding line from Munnar to Thekkady as the section
+   scrolls past, pausing visually at each of the four stops (see JourneyRoad.tsx / ScrollEffects.tsx). ---- */
+.journey-road { width: 100%; height: clamp(500px, 74vh, 800px); overflow: visible; }
+/* The soft wide shoulder gives the route actual road width; the thin gold line on top of it
+   (which carries the real scroll-reveal animation) reads as the painted centre line. */
+.journey-road__surface {
+  fill: none; stroke: rgba(234, 226, 218, 0.22); stroke-width: 9; stroke-linecap: round;
+  filter: blur(0.4px);
+}
+.journey-road__path {
+  fill: none; stroke: var(--gold); stroke-width: 1.6; stroke-linecap: round;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.35));
+}
+.journey-road__stop { pointer-events: none; }
+.journey-road__dot { fill: var(--ink); stroke: var(--gold); stroke-width: 2.5; }
+.journey-road__place {
+  font-family: var(--font-display); font-style: italic; font-size: 13px; fill: var(--gold);
+}
+.journey-road__label {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.04em; fill: var(--ivory);
+  paint-order: stroke; stroke: rgba(8, 15, 11, 0.75); stroke-width: 3px;
+}
+.journey-road__mark circle { fill: rgba(234, 226, 218, 0.45); }
+.journey-road__mark text {
+  font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; fill: var(--faint);
+}
+.journey-road__car {
+  fill: var(--gold);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+.journey-road__car circle { fill: rgba(8, 15, 11, 0.9); }
 
 
 /* ==========================================================================
@@ -662,7 +725,9 @@ em { font-style: italic; }
   margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); scroll-padding-inline: var(--gutter); padding-bottom: 4px;
 }
 .journal__carousel::-webkit-scrollbar { display: none; }
-.story-card { flex: 0 0 clamp(200px, 22vw, 280px); scroll-snap-align: start; margin: 0; padding: 0; list-style: none; }
+/* Grows to fill the row when there are only a few cards (flex-grow), but still falls back to a
+   fixed-width scrolling carousel once there are enough cards to overflow the row. */
+.story-card { flex: 1 1 clamp(200px, 22vw, 280px); max-width: 420px; scroll-snap-align: start; margin: 0; padding: 0; list-style: none; }
 .story-card a {
   display: block; width: 100%; max-width: 100%; margin: 0; padding: 0;
   text-align: left; box-sizing: border-box;
@@ -687,7 +752,7 @@ em { font-style: italic; }
 .story-card a .text-link { display: inline-block; margin: 8px 0 0; padding: 0; }
 
 /* Rush layout variant: Journal thumbnails get the same deckle (torn-paper) edge as the Experiences cards */
-.rush-theme .story-card__frame {
+.story-card__frame {
   border: 0;
   border-radius: 0;
   -webkit-mask-image: url("/torn-edge.svg");
@@ -696,7 +761,7 @@ em { font-style: italic; }
   mask-size: 100% 100%;
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
-  filter: drop-shadow(0 0 0 #5c8a4a) drop-shadow(0 0 1.5px #5c8a4a) drop-shadow(0 0 1.5px #5c8a4a);
+  filter: drop-shadow(0 0 0 #d8b273) drop-shadow(0 0 1.5px #d8b273) drop-shadow(0 0 1.5px #d8b273);
 }
 
 /* ==========================================================================
@@ -711,10 +776,10 @@ em { font-style: italic; }
 .resp__inner { display: grid; justify-items: start; }
 .resp__title { max-width: 24ch; font-size: 38px; }
 .resp__lede { margin-top: 22px; max-width: 32rem; font-size: var(--fs-body); color: var(--mist); }
-.resp__stats { display: grid; grid-template-columns: repeat(3, minmax(0, 220px)); gap: 32px; margin-block: 56px 40px; }
+.resp__stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; margin-block: 56px 40px; }
 .resp__stats > div { display: flex; flex-direction: column-reverse; gap: 8px; padding-top: 18px; border-top: 1px solid var(--hair); }
 .resp__stats dd { font-family: var(--font-display); font-size: clamp(3rem, 5vw, 4.6rem); line-height: 1; }
-.resp__stats dt { font-size: 0.875rem; color: var(--mist); }
+.resp__stats dt { font-size: 0.875rem; color: var(--mist); white-space: nowrap; }
 
 /* ==========================================================================
    Reviews
@@ -726,12 +791,55 @@ em { font-style: italic; }
     linear-gradient(to bottom, rgba(10, 18, 14, 0.62), rgba(10, 18, 14, 0.5) 50%, rgba(10, 18, 14, 0.78));
 }
 .reviews__inner { display: grid; justify-items: center; text-align: center; }
-.review { display: grid; gap: 28px; }
+.review { display: grid; justify-items: center; gap: 14px; max-width: 38rem; }
+.review__mark {
+  font-family: Georgia, "Times New Roman", serif; font-style: italic;
+  font-size: clamp(2.6rem, 6vw, 4.4rem); line-height: 0.6; color: var(--gold); opacity: 0.55;
+}
+.review__stars { display: flex; gap: 6px; margin-top: -6px; }
+.review__stars svg { width: 14px; height: 14px; fill: rgba(234, 226, 218, 0.25); }
+.review__stars svg.is-full { fill: var(--gold); }
 .review__quote {
   font-family: var(--font-display); font-style: italic; font-weight: 400;
-  font-size: clamp(2.2rem, 5vw, 4.8rem); line-height: 1.08; max-width: 20ch; margin-inline: auto; text-wrap: balance;
+  font-size: clamp(1.5rem, 3.2vw, 2.6rem); line-height: 1.12; max-width: 18ch; text-wrap: balance;
 }
-.review figcaption { font-size: 0.875rem; letter-spacing: 0.08em; color: var(--mist); }
+.review__body { display: grid; gap: 10px; max-width: 32rem; margin-top: 4px; color: var(--mist); font-size: 0.875rem; line-height: 1.55; }
+.review figcaption {
+  display: grid; gap: 4px; margin-top: 12px; padding-top: 14px;
+  border-top: 1px solid var(--hair);
+  font-size: 0.8125rem; letter-spacing: 0.08em; color: var(--mist);
+}
+.review__by { color: var(--ivory); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.75rem; }
+.review__source { color: var(--faint); }
+
+.review-carousel { display: grid; justify-items: center; }
+.review-carousel__card {
+  background: rgba(14, 24, 18, 0.45); backdrop-filter: blur(18px) saturate(1.2); -webkit-backdrop-filter: blur(18px) saturate(1.2);
+  border: 1px solid var(--hair); border-radius: 24px;
+  padding: clamp(24px, 4vw, 44px) clamp(20px, 5vw, 56px);
+  min-height: clamp(320px, 42vh, 440px);
+  max-width: 44rem;
+  display: grid; align-content: center; justify-items: center;
+}
+/* Opacity only (no translateY like fadeUp) so switching reviews never shifts the card; the
+   card's own min-height above keeps it from resizing between reviews of very different
+   lengths, which was the actual cause of the "jump". */
+.review-carousel .review { animation: reviewFade 0.5s var(--ease) both; }
+@keyframes reviewFade { from { opacity: 0; } to { opacity: 1; } }
+.review-carousel__nav { display: flex; align-items: center; gap: 22px; margin-top: 32px; }
+.review-carousel__arrow {
+  background: none; border: 1px solid var(--hair); border-radius: 50%;
+  width: 36px; height: 36px; display: grid; place-items: center;
+  color: var(--ivory); font-size: 1rem; cursor: pointer; transition: border-color 0.3s, color 0.3s;
+}
+.review-carousel__arrow:hover { border-color: var(--gold); color: var(--gold); }
+.review-carousel__dots { display: flex; gap: 10px; }
+.review-carousel__dot {
+  width: 8px; height: 8px; border-radius: 50%; padding: 0; border: 0;
+  background: rgba(234, 226, 218, 0.3); cursor: pointer; transition: background 0.3s, transform 0.3s;
+}
+.review-carousel__dot:hover { background: rgba(234, 226, 218, 0.6); }
+.review-carousel__dot.is-active { background: var(--gold); transform: scale(1.3); }
 
 /* ==========================================================================
    Map
@@ -826,6 +934,7 @@ em { font-style: italic; }
   pointer-events: none; opacity: 0; transition: opacity 3s var(--ease);
 }
 .drizzle.is-on { opacity: 1; }
+.drizzle.is-hidden { opacity: 0 !important; }
 @media (prefers-reduced-motion: reduce) { .mist { opacity: 1; } }
 
 /* ==========================================================================
@@ -910,6 +1019,7 @@ em { font-style: italic; }
 
   .journey__grid, .offers__grid, .map__grid, .plan__grid { grid-template-columns: minmax(0, 1fr); }
   .journey { padding-block: 104px 80px; }
+  .journey-road { height: clamp(320px, 70vw, 440px); margin-top: 24px; }
   .offers__seasonal { margin-top: 32px; }
 
 

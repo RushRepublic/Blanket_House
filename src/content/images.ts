@@ -2,6 +2,9 @@
 // Generated from src/assets/images — keep in step with scripts/prepare-images.mjs.
 import daysHoneymoonPool from "@/assets/images/days-honeymoon-pool.jpg";
 import daysNestWalkway from "@/assets/images/days-nest-walkway.jpg";
+import expAdventureAirgun from "@/assets/images/exp-adventure-airgun.jpg";
+import expAdventureArchery from "@/assets/images/exp-adventure-archery.jpg";
+import expAdventureRopeCanopy from "@/assets/images/exp-adventure-rope-canopy.jpg";
 import expAdventureRope from "@/assets/images/exp-adventure-rope.jpg";
 import expBgMountainMist from "@/assets/images/exp-bg-mountain-mist.jpg";
 import expCultureAttire from "@/assets/images/exp-culture-attire.jpg";
@@ -55,16 +58,22 @@ import seasonMonsoon from "@/assets/images/season-monsoon.jpg";
 import seasonSummer from "@/assets/images/season-summer.jpg";
 import seasonWinter from "@/assets/images/season-winter.jpg";
 import stayDaysAerial from "@/assets/images/stay-days-aerial.jpg";
+import stayDaysExteriorDrone from "@/assets/images/stay-days-exterior-drone.jpg";
 import stayDaysNest from "@/assets/images/stay-days-nest.jpg";
 import stayMunnarClouds from "@/assets/images/stay-munnar-clouds.jpg";
+import stayMunnarExterior10 from "@/assets/images/stay-munnar-exterior-10.jpg";
 import stayMunnarSuite from "@/assets/images/stay-munnar-suite.jpg";
 import stayRiversideAerial from "@/assets/images/stay-riverside-aerial.jpg";
+import stayRiversideExterior132 from "@/assets/images/stay-riverside-exterior-132.jpg";
 import stayRiversideDeck from "@/assets/images/stay-riverside-deck.jpg";
 import staysHeadWaterfall from "@/assets/images/stays-head-waterfall.jpg";
 
 export const img = {
   daysHoneymoonPool,
   daysNestWalkway,
+  expAdventureAirgun,
+  expAdventureArchery,
+  expAdventureRopeCanopy,
   expAdventureRope,
   expBgMountainMist,
   expCultureAttire,
@@ -118,10 +127,13 @@ export const img = {
   seasonSummer,
   seasonWinter,
   stayDaysAerial,
+  stayDaysExteriorDrone,
   stayDaysNest,
   stayMunnarClouds,
+  stayMunnarExterior10,
   stayMunnarSuite,
   stayRiversideAerial,
+  stayRiversideExterior132,
   stayRiversideDeck,
   staysHeadWaterfall,
 };

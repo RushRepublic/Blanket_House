@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { monthNames, seasons } from "@/content/site";
+import { monthImages, monthNames, seasons } from "@/content/site";
 
 const seasonFor = (month: number) => seasons.find((s) => s.months.includes(month)) ?? seasons[0];
 
@@ -16,15 +16,15 @@ export default function SeasonGuide() {
   return (
     <div className="seasons">
       <div className="seasons__media" aria-hidden="true">
-        {seasons.map((s) => (
+        {monthImages.map((m, i) => (
           <Image
-            key={s.id}
-            src={s.image}
+            key={i}
+            src={m.image}
             alt=""
             fill
             sizes="100vw"
             placeholder="blur"
-            className={s.id === season.id ? "is-active" : ""}
+            className={i + 1 === month ? "is-active" : ""}
           />
         ))}
       </div>

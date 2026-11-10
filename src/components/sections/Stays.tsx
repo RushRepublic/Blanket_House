@@ -53,10 +53,6 @@ export default function Stays() {
                     <dt>Stay in</dt>
                     <dd>{s.rooms.join(" · ")}</dd>
                   </div>
-                  <div>
-                    <dt>Don&apos;t miss</dt>
-                    <dd>{s.highlights.join(" · ")}</dd>
-                  </div>
                 </dl>
                 <div className="chapter__ctas">
                   <a href="#stays" className="btn btn--gold">Explore {s.short}</a>
