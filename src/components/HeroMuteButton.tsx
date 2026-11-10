@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useState, type RefObject } from "react";
+import type { VimeoPlayer } from "./HeroVideo";
 
-export default function HeroMuteButton({ video }: { video: RefObject<HTMLVideoElement | null> }) {
+export default function HeroMuteButton({ player }: { player: RefObject<VimeoPlayer | null> }) {
   const [muted, setMuted] = useState(true);
   const [inHero, setInHero] = useState(true);
 
@@ -15,10 +16,9 @@ export default function HeroMuteButton({ video }: { video: RefObject<HTMLVideoEl
   }, []);
 
   const toggle = () => {
-    const el = video.current;
-    if (!el) return;
-    el.muted = !el.muted;
-    setMuted(el.muted);
+    const next = !muted;
+    player.current?.setMuted(next);
+    setMuted(next);
   };
 
   if (!inHero) return null;

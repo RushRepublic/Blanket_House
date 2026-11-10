@@ -2,16 +2,16 @@
 
 import { useRef } from "react";
 import BookingBar from "../BookingBar";
-import HeroVideo from "../HeroVideo";
+import HeroVideo, { type VimeoPlayer } from "../HeroVideo";
 import HeroMuteButton from "../HeroMuteButton";
 
 export default function Hero() {
-  const video = useRef<HTMLVideoElement>(null);
+  const player = useRef<VimeoPlayer | null>(null);
 
   return (
     <>
       <section id="top" className="hero" aria-label="Blanket Hotels & Resorts">
-        <HeroVideo ref={video} />
+        <HeroVideo playerRef={player} />
         <div className="hero__shade" aria-hidden="true" />
       </section>
 
@@ -20,7 +20,7 @@ export default function Hero() {
           a position:fixed descendant's hit-testing even though it's positioned relative to the
           viewport — that was silently breaking clicks on the mute button. The booking bar also
           needs to sit outside it to straddle the hero/intro seam without being clipped. */}
-      <HeroMuteButton video={video} />
+      <HeroMuteButton player={player} />
       <div className="hero__booking wrap">
         <BookingBar />
       </div>

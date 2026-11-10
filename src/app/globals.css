@@ -268,9 +268,22 @@ em { font-style: italic; }
   padding-top: calc(var(--header-h) + 60px);
   background: var(--ink);
 }
-.hero__media { position: absolute; inset: 0; z-index: -2; overflow: hidden; will-change: transform; animation: heroOpen 1.8s var(--ease) both; }
+.hero__media {
+  position: absolute; inset: 0; z-index: -2; overflow: hidden; will-change: transform;
+  animation: heroOpen 1.8s var(--ease) both;
+  display: flex; align-items: center; justify-content: center;
+}
 .hero__media img, .hero__media video { object-fit: cover; width: 100%; height: 100%; animation: heroSettle 3s var(--ease) both; }
 .hero__media video { pointer-events: none; }
+/* The Vimeo embed is always 16:9; this is the standard trick to make it cover the hero like
+   object-fit: cover. Centring is done with flex (not a translate transform) because heroSettle
+   also animates `transform`, which would otherwise overwrite a transform-based centering. */
+.hero__media iframe {
+  flex: none; border: 0; pointer-events: none;
+  width: 100%; height: 56.25vw; /* 100 / 16 * 9 */
+  min-height: 100%; min-width: 177.78vh; /* 100 / 9 * 16 */
+  animation: heroSettle 3s var(--ease) both;
+}
 .hero__shade {
   position: absolute; inset: 0; z-index: -1; opacity: 0.65;
   background: linear-gradient(to top, rgba(8, 15, 11, 0.95) 0%, rgba(8, 15, 11, 0.35) 45%, rgba(8, 15, 11, 0.12) 70%, rgba(8, 15, 11, 0.5) 100%);
