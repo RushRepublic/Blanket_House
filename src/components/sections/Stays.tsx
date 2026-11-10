@@ -1,26 +1,28 @@
 import Image from "next/image";
-import Backdrop from "../Backdrop";
 import { stays } from "@/content/site";
-import { img } from "@/content/images";
 
 export default function Stays() {
   return (
     <section id="stays" className="stays dark" aria-labelledby="stays-title">
       <header className="stays__head">
-        <Backdrop
-          image={img.staysHeadWaterfall}
-          alt="River cutting through dense forest canopy in the Munnar hills"
-          shade="full"
-          parallax={0.15}
-        />
         <div className="wrap">
-          <p className="eyebrow eyebrow--gold">Stays</p>
           <h2 id="stays-title" className="h2 stays__title" data-split>
             Choose your landscape
           </h2>
           <p className="stays__sub" data-fade>
             Three places, three different worlds. A forest in Thekkady, a river and a waterfall in the hills of Munnar.
           </p>
+
+          <nav className="stays__picker" aria-label="Jump to a landscape" data-fade>
+            {stays.map((s) => (
+              <a key={s.slug} href={`#stay-${s.slug}`} className="stays__picker-item">
+                <span className="stays__picker-icon">
+                  <Image src={s.icon} alt="" fill sizes="88px" />
+                </span>
+                <span className="stays__picker-label">{s.landscape}</span>
+              </a>
+            ))}
+          </nav>
         </div>
       </header>
 

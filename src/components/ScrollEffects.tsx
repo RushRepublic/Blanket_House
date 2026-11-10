@@ -238,10 +238,12 @@ export default function ScrollEffects() {
           scrollTrigger: { trigger: ".journal__carousel", start: "top 80%", once: true },
         });
 
-        /* ---------- Journeys: the section holds still while the road draws itself and the car
-           drives Munnar → Thekkady; the backdrop photo crossfades to whichever stop the car has
-           just reached (stop/landmark placement already happened above, unconditionally) ---------- */
-        if (route && routePath) {
+        /* ---------- Journeys: desktop-only pin — the section holds still while the road draws
+           itself, the car drives Munnar → Thekkady, and the backdrop crossfades to each stop
+           (stop/landmark placement already happened above, unconditionally). On mobile the road
+           is hidden entirely (see globals.css) and there's nothing to animate, so skipping the
+           pin there too avoids forcing an extra, pointless scroll distance on phones. ---------- */
+        if (route && routePath && desktop) {
           const total = routePath.getTotalLength();
           const car = route.querySelector<SVGGElement>(".journey-road__car");
           routePath.style.strokeDashoffset = `${total}`;

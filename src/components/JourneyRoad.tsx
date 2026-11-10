@@ -28,13 +28,17 @@ export default function JourneyRoad() {
         </g>
       ))}
 
-      {journey.stops.map((s) => (
-        <g key={s.label} className="journey-road__stop" data-at={s.at}>
-          <circle className="journey-road__dot" r="6" />
-          <text className="journey-road__place" y="-18" textAnchor="middle">{s.place}</text>
-          <text className="journey-road__label" y="22" textAnchor="middle">{s.label}</text>
-        </g>
-      ))}
+      {journey.stops.map((s) => {
+        const toSide = s.side === "right" ? 16 : -16;
+        const anchor = s.side === "right" ? "start" : "end";
+        return (
+          <g key={s.label} className="journey-road__stop" data-at={s.at}>
+            <circle className="journey-road__dot" r="6" />
+            <text className="journey-road__place" x={toSide} y="-6" textAnchor={anchor}>{s.place}</text>
+            <text className="journey-road__label" x={toSide} y="10" textAnchor={anchor}>{s.label}</text>
+          </g>
+        );
+      })}
 
       <g className="journey-road__car">
         <path d="M-9,-3 H9 L7,-7 H3 L1,-10 H-1 L-3,-7 H-7 Z" />

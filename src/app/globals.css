@@ -133,7 +133,7 @@ em { font-style: italic; }
 
 /* ---------- Logo ---------- */
 .logo { display: inline-flex; align-items: center; }
-.logo__mark { height: 60px; width: auto; }
+.logo__mark { height: 74px; width: auto; }
 .logo--light .logo__mark { height: 40px; }
 
 /* ---------- Full-bleed photo background ---------- */
@@ -364,7 +364,7 @@ em { font-style: italic; }
    begins; the horizontal gradient underneath is the original one for text legibility. */
 .intro .backdrop__shade {
   background:
-    linear-gradient(to bottom, var(--ink) 0%, transparent 12%),
+    linear-gradient(to bottom, var(--ink) 0%, transparent 12%, transparent 86%, var(--ink) 100%),
     linear-gradient(100deg, rgba(8, 15, 11, 0.72) 0%, rgba(8, 15, 11, 0.38) 55%, rgba(8, 15, 11, 0.2) 100%);
 }
 .intro__stage { position: relative; z-index: 2; padding-block: clamp(60px, 7vh, 100px); }
@@ -461,7 +461,7 @@ em { font-style: italic; }
   transform: translateX(-50%);
   transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.exp-card__img img { object-fit: cover; object-position: var(--focus, 50% 50%); }
+.exp-card__img img { object-fit: cover; object-position: var(--focus, 50% 50%); will-change: transform; }
 .exp-card__shade { position: absolute; inset: 0; background: linear-gradient(to top, rgba(8, 15, 11, 0.88) 0%, rgba(8, 15, 11, 0.25) 45%, transparent 70%); }
 
 .exp-card__copy { position: absolute; left: 22px; bottom: 24px; }
@@ -491,7 +491,7 @@ em { font-style: italic; }
   mask-size: 100% 100%;
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
-  filter: drop-shadow(0 0 0 #d8b273) drop-shadow(0 0 1.5px #d8b273) drop-shadow(0 0 1.5px #d8b273);
+  filter: drop-shadow(0 0 1.5px #d8b273);
 }
 .exp-card::after { display: none; }
 
@@ -511,16 +511,50 @@ em { font-style: italic; }
 /* ==========================================================================
    Stays — stacked full-screen chapters
    ========================================================================== */
-.stays { background: var(--ink); }
+.stays { position: relative; background: var(--ink); }
+/* Eases the top of this section in from dark instead of cutting hard against Intro above it,
+   same technique as the Moments gallery's top fade. */
+.stays::before {
+  content: ""; position: absolute; inset: 0 0 auto 0; z-index: 2; height: 22vh; pointer-events: none;
+  background: linear-gradient(to bottom, var(--ink) 0%, transparent 100%);
+}
 .stays__head { position: relative; overflow: hidden; isolation: isolate; }
 .stays__head .backdrop__shade {
   background:
     linear-gradient(180deg, rgba(15, 26, 20, 0.8) 0%, transparent 10%, transparent 80%, var(--ink) 100%),
     rgba(10, 18, 14, 0.45);
 }
-.stays__head .wrap { display: grid; justify-items: start; padding-block: clamp(48px, 6vw, 96px) clamp(56px, 8vw, 100px); }
+.stays__head .wrap {
+  display: grid; justify-items: center; text-align: center; justify-self: center;
+  padding-block: clamp(48px, 6vw, 96px) clamp(56px, 8vw, 100px);
+}
+.stays__sub { margin-inline: auto; }
 .stays__title { font-size: 38px; }
-.stays__sub { max-width: 40ch; margin-top: 24px; color: var(--mist); font-size: var(--fs-body); }
+
+/* Carved-badge landscape icons: click one to jump straight to that resort's chapter. */
+.stays__picker { display: flex; justify-content: center; gap: clamp(28px, 5vw, 56px); margin-top: clamp(28px, 4vw, 44px); }
+.stays__picker-item {
+  display: grid; justify-items: center; gap: 12px;
+  color: var(--ivory); text-decoration: none;
+}
+.stays__picker-icon {
+  position: relative; display: block; width: clamp(64px, 7vw, 88px); aspect-ratio: 1;
+  border-radius: 50%; overflow: hidden;
+  box-shadow: 0 0 0 1px var(--hair), 0 18px 34px rgba(0, 0, 0, 0.4);
+  transition: box-shadow 0.4s var(--ease), transform 0.4s var(--ease);
+}
+.stays__picker-icon img { object-fit: cover; }
+.stays__picker-item:hover .stays__picker-icon,
+.stays__picker-item:focus-visible .stays__picker-icon {
+  transform: translateY(-4px);
+}
+.stays__picker-label {
+  font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--faint);
+  transition: color 0.3s;
+}
+.stays__picker-item:hover .stays__picker-label,
+.stays__picker-item:focus-visible .stays__picker-label { color: var(--gold); }
+.stays__sub { max-width: none; white-space: nowrap; margin-top: 24px; color: var(--mist); font-size: var(--fs-body); }
 
 .chapter {
   position: sticky; top: 0;
@@ -535,7 +569,14 @@ em { font-style: italic; }
 .chapter__shade {
   position: absolute; inset: 0; z-index: -1;
   background:
-    linear-gradient(to top, var(--ink) 0%, color-mix(in srgb, var(--mood) 70%, transparent) 5%, transparent 30%, transparent 78%, color-mix(in srgb, var(--mood) 30%, transparent) 94%, var(--ink) 100%),
+    linear-gradient(to top, var(--ink) 0%, color-mix(in srgb, var(--mood) 70%, transparent) 5%, transparent 30%, transparent 100%),
+    linear-gradient(to right, rgba(8, 15, 11, 0.22), transparent 45%);
+}
+/* Only the first chapter blends into the "Choose your landscape" header above it — the other
+   chapters stay as they are (no top fade), as asked. */
+.chapters > .chapter:first-of-type .chapter__shade {
+  background:
+    linear-gradient(to top, var(--ink) 0%, color-mix(in srgb, var(--mood) 70%, transparent) 5%, transparent 30%, transparent 72%, var(--ink) 100%),
     linear-gradient(to right, rgba(8, 15, 11, 0.22), transparent 45%);
 }
 .chapter__ghost {
@@ -609,9 +650,16 @@ em { font-style: italic; }
 .seasons__media { position: absolute; inset: 0; z-index: -1; overflow: hidden; background: var(--forest); }
 .seasons__media img { object-fit: cover; opacity: 0; transform: scale(1.06); transition: opacity 1.2s var(--ease), transform 2.4s var(--ease); }
 .seasons__media img.is-active { opacity: 1; transform: scale(1); }
+/* Readability band for the heading/month-selector row, anchored to the full-width photo layer
+   (not the max-width text container) so it genuinely bleeds edge-to-edge instead of stopping
+   short as a visible box. */
+.seasons__media::before {
+  content: ""; position: absolute; inset: 0 0 auto 0; z-index: 1; height: 34vh; pointer-events: none;
+  background: linear-gradient(to bottom, #30423e 0%, rgba(48, 66, 62, 0.55) 40%, transparent 100%);
+}
 .seasons__media::after {
   content: ""; position: absolute; inset: 0;
-  background: linear-gradient(to top, var(--ink) 0%, rgba(8, 15, 11, 0.55) 10%, rgba(8, 15, 11, 0.25) 55%, rgba(8, 15, 11, 0.6) 88%, var(--ink) 100%);
+  background: linear-gradient(to top, var(--ink) 0%, rgba(8, 15, 11, 0.55) 10%, rgba(8, 15, 11, 0.25) 55%, transparent 85%, transparent 100%);
 }
 .seasons__body {
   width: 100%; max-width: var(--max); margin-inline: auto;
@@ -774,7 +822,7 @@ em { font-style: italic; }
   mask-size: 100% 100%;
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
-  filter: drop-shadow(0 0 0 #d8b273) drop-shadow(0 0 1.5px #d8b273) drop-shadow(0 0 1.5px #d8b273);
+  filter: drop-shadow(0 0 1.5px #d8b273);
 }
 
 /* ==========================================================================
@@ -797,7 +845,7 @@ em { font-style: italic; }
 /* ==========================================================================
    Reviews
    ========================================================================== */
-.reviews { min-height: 90svh; display: flex; align-items: center; overflow: hidden; padding-block: clamp(120px, 14vw, 200px); }
+.reviews { height: 90svh; display: flex; align-items: center; overflow: hidden; padding-block: clamp(120px, 14vw, 200px); }
 .reviews .backdrop__shade {
   background:
     linear-gradient(180deg, rgba(15, 26, 20, 0.97) 0%, transparent 18%, transparent 82%, rgba(15, 26, 20, 0.97) 100%),
@@ -830,8 +878,7 @@ em { font-style: italic; }
   background: rgba(14, 24, 18, 0.45); backdrop-filter: blur(18px) saturate(1.2); -webkit-backdrop-filter: blur(18px) saturate(1.2);
   border: 1px solid var(--hair); border-radius: 24px;
   padding: clamp(24px, 4vw, 44px) clamp(20px, 5vw, 56px);
-  min-height: clamp(320px, 42vh, 440px);
-  max-width: 44rem;
+  max-width: 44rem; max-height: 100%; overflow-y: auto;
   display: grid; align-content: center; justify-items: center;
 }
 /* Opacity only (no translateY like fadeUp) so switching reviews never shifts the card; the
@@ -895,6 +942,11 @@ em { font-style: italic; }
 .plan__title { max-width: none; white-space: nowrap; font-size: 38px; }
 .plan__lede { margin-top: 22px; max-width: 32rem; font-size: var(--fs-body); color: var(--mist); }
 .plan__ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 36px; }
+@media (max-width: 480px) {
+  /* Keep the two CTAs side by side instead of letting them wrap to separate lines. */
+  .plan__ctas { flex-wrap: nowrap; }
+  .plan__ctas .btn { flex: 1 1 0; min-width: 0; padding-inline: 14px; font-size: 0.6875rem; }
+}
 .plan__contact { margin-top: 28px; font-size: 0.9rem; color: var(--faint); }
 
 .newsletter { display: grid; gap: 16px; }
@@ -993,11 +1045,13 @@ em { font-style: italic; }
   .journey .h2, .offers .h2, .journal__head .h2, .plan__title {
     font-size: var(--fs-h2); max-width: 14ch; white-space: normal;
   }
+  .stays__title { font-size: var(--fs-h2); }
+  .stays__sub { max-width: 32ch; white-space: normal; }
   .journey__feature-title, .offers__seasonal-title, .offers__list h3 { font-size: var(--fs-h3); white-space: normal; }
   .journal { min-height: 0; padding-block: calc(var(--header-h) + 20px) 28px; }
   .journal__inner { gap: 16px; }
   .journal__head .h2 { margin-bottom: 4px; }
-  .story-card { flex-basis: 74vw; }
+  .story-card { flex: 0 0 74vw; }
   .story-card__frame { aspect-ratio: 3 / 2; }
   .story-card__title { font-size: clamp(1.1rem, 4.5vw, 1.3rem); }
 
@@ -1018,7 +1072,13 @@ em { font-style: italic; }
   .exp-card__more { grid-template-rows: 1fr; opacity: 1; transform: none; }
 
   .chapter { min-height: 0; }
-  .chapter__body { padding-bottom: 40px; }
+  /* The desktop shade was deliberately lightened so the photo reads clearly, but on the narrow
+     mobile card the text sits directly over the image with very little width to breathe, so it
+     needs its own minimal readability gradient right behind it. */
+  .chapter__body {
+    padding-bottom: 40px; padding-top: 48px;
+    background: linear-gradient(to top, rgba(5, 10, 7, 0.85) 0%, rgba(5, 10, 7, 0.55) 60%, transparent 100%);
+  }
   .chapter-dwell { height: 35svh; }
   .chapter__facts { grid-template-columns: minmax(0, 1fr); gap: 12px; }
   .chapter__ghost { font-size: 12vw; }
@@ -1028,11 +1088,16 @@ em { font-style: italic; }
   .moments__col:nth-child(2) { margin-top: 14vh; }
 
   .seasons__panel, .seasons__places { grid-template-columns: minmax(0, 1fr); gap: 28px; }
-  .seasons__body { gap: 48px; padding-top: calc(var(--header-h) + 24px); }
+  /* Same minimal readability fix as the Stays chapter cards: on mobile the text sits directly
+     over the backdrop photo with no side shading to lean on. */
+  .seasons__body {
+    gap: 48px; padding-top: calc(var(--header-h) + 24px);
+    background: linear-gradient(to top, rgba(5, 10, 7, 0.85) 0%, rgba(5, 10, 7, 0.4) 55%, transparent 100%);
+  }
 
   .journey__grid, .offers__grid, .map__grid, .plan__grid { grid-template-columns: minmax(0, 1fr); }
   .journey { padding-block: 104px 80px; }
-  .journey-road { height: clamp(320px, 70vw, 440px); margin-top: 24px; }
+  .journey-road { display: none; }
   .offers__seasonal { margin-top: 32px; }
 
 

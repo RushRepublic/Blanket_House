@@ -12,6 +12,9 @@ import expFoodSpiceGarden from "@/assets/images/exp-food-spice-garden.jpg";
 import expNatureFrog from "@/assets/images/exp-nature-frog.jpg";
 import expWellnessAyurveda from "@/assets/images/exp-wellness-ayurveda.jpg";
 import heroHilltopMist from "@/assets/images/hero-hilltop-mist.jpg";
+import iconLandscapeForest from "@/assets/images/icon-landscape-forest.png";
+import iconLandscapeHills from "@/assets/images/icon-landscape-hills.png";
+import iconLandscapeRiver from "@/assets/images/icon-landscape-river.png";
 import introCoffeeBlossom from "@/assets/images/intro-coffee-blossom.jpg";
 import introHilltopAerial from "@/assets/images/intro-hilltop-aerial.jpg";
 import introPepperVine from "@/assets/images/intro-pepper-vine.jpg";
@@ -61,6 +64,7 @@ import stayDaysAerial from "@/assets/images/stay-days-aerial.jpg";
 import stayDaysExteriorDrone from "@/assets/images/stay-days-exterior-drone.jpg";
 import stayDaysNest from "@/assets/images/stay-days-nest.jpg";
 import stayMunnarClouds from "@/assets/images/stay-munnar-clouds.jpg";
+import stayMunnarEveningView from "@/assets/images/stay-munnar-evening-view.png";
 import stayMunnarExterior10 from "@/assets/images/stay-munnar-exterior-10.jpg";
 import stayMunnarSuite from "@/assets/images/stay-munnar-suite.jpg";
 import stayRiversideAerial from "@/assets/images/stay-riverside-aerial.jpg";
@@ -81,6 +85,9 @@ export const img = {
   expNatureFrog,
   expWellnessAyurveda,
   heroHilltopMist,
+  iconLandscapeForest,
+  iconLandscapeHills,
+  iconLandscapeRiver,
   introCoffeeBlossom,
   introHilltopAerial,
   introPepperVine,
@@ -130,6 +137,7 @@ export const img = {
   stayDaysExteriorDrone,
   stayDaysNest,
   stayMunnarClouds,
+  stayMunnarEveningView,
   stayMunnarExterior10,
   stayMunnarSuite,
   stayRiversideAerial,

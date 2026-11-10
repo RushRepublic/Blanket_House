@@ -40,6 +40,7 @@ export type Stay = {
   imageAlt: string;
   gallery: { image: StaticImageData; alt: string; caption: string }[];
   mood: string; // background colour for this resort's chapter
+  icon: StaticImageData; // carved-badge landscape icon; clicking it jumps to this chapter
 };
 
 export const stays: Stay[] = [
@@ -60,6 +61,7 @@ export const stays: Stay[] = [
       { image: img.daysHoneymoonPool, alt: "Guest relaxing in the private pool of the Honeymoon Villa", caption: "Honeymoon Villa" },
     ],
     mood: "#1d3427",
+    icon: img.iconLandscapeForest,
   },
   {
     slug: "blanket-riverside-munnar",
@@ -78,6 +80,7 @@ export const stays: Stay[] = [
       { image: img.riversideGroveWindow, alt: "Guest at the window of a Riverside Grove Villa looking over the trees", caption: "Grove Villa" },
     ],
     mood: "#1f3a3a",
+    icon: img.iconLandscapeRiver,
   },
   {
     slug: "blanket-hotel-munnar",
@@ -88,14 +91,15 @@ export const stays: Stay[] = [
     line: "A hotel above the waterfall, wrapped in tea gardens and drifting cloud.",
     rooms: ["Blanket Presidential Suite", "Blanket Valley Club", "Blanket Camellia", "Honeymoon Pavilion"],
     highlights: ["Fall View restaurant", "Infinity pool", "Ayurveda", "Waterfall views"],
-    image: img.stayMunnarExterior10,
-    imageAlt: "Blanket Hotel & Spa exterior among the tea hills and waterfall in Munnar",
+    image: img.stayMunnarEveningView,
+    imageAlt: "Evening view of Blanket Hotel & Spa among the tea hills and waterfall in Munnar",
     gallery: [
       { image: img.stayMunnarSuite, alt: "Bath beside a floor-to-ceiling window looking onto the waterfall", caption: "Presidential Suite" },
       { image: img.munnarSuiteBalcony, alt: "Guest on the Presidential Suite balcony above the waterfall", caption: "The balcony" },
       { image: img.munnarFallView, alt: "Fall View restaurant with tables beside the waterfall valley", caption: "Fall View" },
     ],
     mood: "#2a3b3f",
+    icon: img.iconLandscapeHills,
   },
 ];
 
@@ -206,10 +210,10 @@ export const journey = {
   subtitle: "Munnar to Thekkady",
   // `at` is where the stop sits along the road (0 = start, 1 = end).
   stops: [
-    { label: "Blanket Riverside", place: "Munnar", detail: "Bamboo rafting and tea tasting", at: 0, image: img.stayRiversideAerial, alt: "Blanket Riverside villas above the river" },
-    { label: "Blanket Hotel & Spa", place: "Munnar", detail: "Waterfall views and Ayurveda", at: 0.24, image: img.stayMunnarClouds, alt: "Blanket Hotel rising out of the cloud" },
-    { label: "The drive south", place: "On the road", detail: "Spice estates and forest roads", at: 0.6, image: img.expFoodSpiceGarden, alt: "Cardamom plants in a spice garden" },
-    { label: "Blanket Days", place: "Thekkady", detail: "Herping tour and spice walk", at: 1, image: img.stayDaysAerial, alt: "Blanket Days among the forest trees in Thekkady" },
+    { label: "Blanket Riverside", place: "Munnar", detail: "Bamboo rafting and tea tasting", at: 0, side: "right", image: img.stayRiversideAerial, alt: "Blanket Riverside villas above the river" },
+    { label: "Blanket Hotel & Spa", place: "Munnar", detail: "Waterfall views and Ayurveda", at: 0.24, side: "right", image: img.stayMunnarClouds, alt: "Blanket Hotel rising out of the cloud" },
+    { label: "The drive south", place: "On the road", detail: "Spice estates and forest roads", at: 0.6, side: "left", image: img.expFoodSpiceGarden, alt: "Cardamom plants in a spice garden" },
+    { label: "Blanket Days", place: "Thekkady", detail: "Herping tour and spice walk", at: 1, side: "left", image: img.stayDaysAerial, alt: "Blanket Days among the forest trees in Thekkady" },
   ],
   // Small landscape names written along the road.
   landmarks: [

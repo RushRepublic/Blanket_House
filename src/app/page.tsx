@@ -14,7 +14,6 @@ import Offers from "@/components/sections/Offers";
 import Journal from "@/components/sections/Journal";
 import Responsible from "@/components/sections/Responsible";
 import Reviews from "@/components/sections/Reviews";
-import MapSection from "@/components/sections/MapSection";
 import Plan from "@/components/sections/Plan";
 import Footer from "@/components/sections/Footer";
 
@@ -37,7 +36,6 @@ export default function Home() {
         <Journal />
         <Responsible />
         <Reviews />
-        <MapSection />
         <Plan />
       </main>
       <Footer />

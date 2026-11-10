@@ -30,7 +30,7 @@ const reviews = [
 export default function Reviews() {
   return (
     <section className="reviews dark" aria-labelledby="reviews-title">
-      <Backdrop image={img.reviewsRiversideDusk} shade="full" parallax={0.2} />
+      <Backdrop image={img.reviewsRiversideDusk} shade="full" parallax={0} />
       <div className="wrap reviews__inner">
         <h2 id="reviews-title" className="eyebrow eyebrow--gold">In our guests&apos; words</h2>
         <ReviewsCarousel reviews={reviews} />
