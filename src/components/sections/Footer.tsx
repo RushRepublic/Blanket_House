@@ -30,7 +30,6 @@ export default function Footer() {
           <a href="#">Privacy</a>
           <a href="#">Terms</a>
           <a href="#">Accessibility</a>
-          <span>English · INR</span>
         </span>
       </div>
     </footer>

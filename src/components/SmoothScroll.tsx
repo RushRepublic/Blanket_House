@@ -15,6 +15,16 @@ export default function SmoothScroll() {
     gsap.ticker.add(tick);
     gsap.ticker.lagSmoothing(0);
 
+    // Lenis measures the page's scrollable height once on init, but most of this site's actual
+    // height only settles once images, the hero video iframe and web fonts finish loading —
+    // without resyncing, its smooth-scroll math quietly drifts out of step with the real page,
+    // which feels like the smoothing "missing" at random points rather than everywhere at once.
+    const resync = () => lenis.resize();
+    document.fonts?.ready.then(resync);
+    window.addEventListener("load", resync);
+    const resizeObserver = new ResizeObserver(resync);
+    resizeObserver.observe(document.body);
+
     // Let menus pause page scrolling while they are open.
     const stop = () => lenis.stop();
     const start = () => lenis.start();
@@ -23,6 +33,8 @@ export default function SmoothScroll() {
 
     return () => {
       gsap.ticker.remove(tick);
+      window.removeEventListener("load", resync);
+      resizeObserver.disconnect();
       window.removeEventListener("blanket:lock", stop);
       window.removeEventListener("blanket:unlock", start);
       lenis.destroy();

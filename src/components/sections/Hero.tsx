@@ -13,17 +13,17 @@ export default function Hero() {
       <section id="top" className="hero" aria-label="Blanket Hotels & Resorts">
         <HeroVideo playerRef={player} />
         <div className="hero__shade" aria-hidden="true" />
+
+        <div className="hero__booking wrap">
+          <BookingBar />
+        </div>
       </section>
 
-      {/* Both of these are rendered outside the hero section on purpose: it has overflow:hidden,
-          which (since the section itself isn't a transform/filter containing block) still clips
-          a position:fixed descendant's hit-testing even though it's positioned relative to the
-          viewport — that was silently breaking clicks on the mute button. The booking bar also
-          needs to sit outside it to straddle the hero/intro seam without being clipped. */}
+      {/* Rendered outside the hero section on purpose: it has overflow:hidden, which (since the
+          section itself isn't a transform/filter containing block) still clips a position:fixed
+          descendant's hit-testing even though it's positioned relative to the viewport — that was
+          silently breaking clicks on the mute button. */}
       <HeroMuteButton player={player} />
-      <div className="hero__booking wrap">
-        <BookingBar />
-      </div>
     </>
   );
 }
